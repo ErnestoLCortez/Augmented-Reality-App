@@ -21,10 +21,11 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "/node_modules/(?!react-native|react|native-base|@shoutem)"
+      "/node_modules/(?!react-native|native-base|@shoutem)"
     ],
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/"
     ],
     "collectCoverage": false,
     "verbose": true
