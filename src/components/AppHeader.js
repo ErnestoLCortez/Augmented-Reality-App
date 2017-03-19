@@ -11,7 +11,7 @@ const AppHeader = () => {
         </Button>
       </Left>
       <Body>
-      <Title>TerraSite???</Title>
+      <Title>TerraPhone</Title>
       </Body>
       <Right>
       </Right>
