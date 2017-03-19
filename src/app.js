@@ -4,6 +4,7 @@ import { Container } from 'native-base';
 import firebase from 'firebase';
 import AppHeader from './components/AppHeader';
 import LoginForm from './components/LoginForm';
+import TabbedFooter from './components/TabbedFooter';
 
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
       <Container>
         <AppHeader />
         <LoginForm />
+        <TabbedFooter/>
       </Container>
     );
   }
