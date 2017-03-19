@@ -28,6 +28,11 @@
       "<rootDir>/build/",
       "<rootDir>/node_modules/"
     ],
+    "modulePathIgnorePatterns": [
+      "/node_modules/react-native/Libraries/react-native/",
+      "/node_modules/react-native/packager/",
+      "node_modules/react-native/node_modules/"
+    ],
     "collectCoverage": false,
     "verbose": true
   }
