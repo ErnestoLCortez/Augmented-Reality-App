@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import { Container, Content, Form, Item, Input, Label, Button, Text, Card } from 'native-base';
 import { FormInput } from './FormInput';
 import firebase from 'firebase';
@@ -12,7 +12,12 @@ class LoginForm extends Component {
 
   onButtonPress() {
     const { email, password } = this.state;
-      firebase.auth().signInWithEmailAndPassword(email, password);
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage);
+      });
   }
 
   render() {
