@@ -4,6 +4,7 @@ import { Container } from 'native-base';
 import firebase from 'firebase';
 import AppHeader from './components/AppHeader';
 import LoginForm from './components/LoginForm';
+import Navigator from './components/Navigator';
 
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
     return (
       <Container>
         <AppHeader />
-        <LoginForm />
+        <Navigator />
       </Container>
     );
   }
