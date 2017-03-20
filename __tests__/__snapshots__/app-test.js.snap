@@ -10,28 +10,6 @@ exports[`App view renders correctly 1`] = `
   }
   virtual={undefined}
 >
-  <View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#F8F8F8",
-          "borderBottomColor": "#a7a6ab",
-          "borderBottomWidth": 0.5,
-          "elevation": 3,
-          "flexDirection": "row",
-          "height": 64,
-          "justifyContent": "center",
-          "left": 0,
-          "paddingLeft": 10,
-          "paddingRight": 10,
-          "paddingTop": 15,
-          "right": 0,
-          "top": 0,
-        }
-      }
-      virtual={undefined}
-    />
-  </View>
   <RCTScrollView
     automaticallyAdjustContentInsets={false}
     contentInset={

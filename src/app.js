@@ -20,7 +20,6 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <AppHeader />
         <LoginForm />
         <TabbedFooter/>
       </Container>
