@@ -46,29 +46,30 @@ class LoginForm extends Component {
         return (
                 <Content>
                   <Form>
-                  <Card>
-                      <FormInput
-                          labelProp='email'
-                          value={this.state.email}
-                          onChangeText={ email => this.setState({ email }) }
-                      />
-                  </Card>
-                  <Card>
-                      <FormInput
-                          labelProp='password'
-                          value={this.state.password}
-                          onChangeText={ password => this.setState({ password }) }
-                      />
-                  </Card>
-                        <Card>
-                            <Button full success onPress={this.onButtonPress.bind(this)}>
-                                <Text>Log in</Text>
-                            </Button>
-                            <Button full info onPress={this.onGoogleButtonPress.bind(this)}>
-                                <Text>Log in with Google</Text>
-                            </Button>
-                        </Card>
-                    </Form>
+                    <Card>
+                        <FormInput
+                            labelProp='email'
+                            value={this.state.email}
+                            onChangeText={ email => this.setState({ email }) }
+                        />
+                    </Card>
+                    <Card>
+                        <FormInput
+                            labelProp='password'
+                            value={this.state.password}
+                            onChangeText={ password => this.setState({ password }) }
+                            secureTextEntry
+                        />
+                    </Card>
+                    <Card>
+                        <Button full success onPress={this.onButtonPress.bind(this)}>
+                            <Text>Log in</Text>
+                        </Button>
+                        <Button full info onPress={this.onGoogleButtonPress.bind(this)}>
+                            <Text>Log in with Google</Text>
+                        </Button>
+                    </Card>
+                  </Form>
                 </Content>
         );
     }
