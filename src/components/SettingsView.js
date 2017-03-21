@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
-import { Container, Content, ListItem, Text, Separator } from 'native-base';
+import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
 
 export default class SettingsView extends Component {
+    constructor(props){
+        super(props);
+        this.state = {initialPosition: 'unknown', lastPosition: 'unknown'}
+        //Binds for onclick
+        this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
+    }
+    watchID: ?number = null;
+
+    //Function that sets states with GPS coordinates and other information
+    testGPSButtonPress(event){
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                //Turns json to string for setting initialPosition state
+                var initialPosition = JSON.stringify(position);
+                this.setState({initialPosition});
+            },
+            (error) => alert(JSON.stringify(error)),
+            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+        );
+        this.watchID = navigator.geolocation.watchPosition((position) => {
+            //Turns json to string for setting lastPosition state
+            var lastPosition = JSON.stringify(position);
+            this.setState({lastPosition});
+        });
+    }
     render() {
         return (
             <Container>
@@ -23,9 +48,18 @@ export default class SettingsView extends Component {
                     <Separator bordered>
                         <Text>Testing</Text>
                     </Separator>
-
                     <ListItem>
-                        <Text>GPS Test</Text>
+                        <Button onPress={this.testGPSButtonPress}>
+                            <Text>GPS Test</Text>
+                        </Button>
+                    </ListItem>
+                    <ListItem>
+                        <Text>Current Position</Text>
+                        <Text>{this.state.initialPosition}</Text>
+                    </ListItem>
+                    <ListItem>
+                        <Text>Last Position</Text>
+                        <Text>{this.state.lastPosition}</Text>
                     </ListItem>
                 </Content>
             </Container>
