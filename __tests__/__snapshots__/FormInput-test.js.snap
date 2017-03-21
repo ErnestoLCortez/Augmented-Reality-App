@@ -73,11 +73,13 @@ exports[`FormInput component renders correctly 1`] = `
     </Text>
   </View>
   <TextInput
+    autoCorrect={false}
     editable={true}
     onBlur={[Function]}
     onChangeText={[Function]}
     onFocus={[Function]}
     placeholderTextColor="#575757"
+    secureTextEntry={undefined}
     style={
       Object {
         "color": "#000",

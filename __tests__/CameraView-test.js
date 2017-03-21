@@ -1,12 +1,11 @@
 import 'react-native';
 import React from 'react';
-import App from '../src/app';
-
+import CameraView from '../src/components/CameraView';
 import renderer from 'react-test-renderer';
 
-test('App view renders correctly', () => {
+test('FormInput component renders correctly', () => {
   const tree = renderer.create(
-    <App />
+    <CameraView />
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });
