@@ -17,7 +17,6 @@
 - GPS Init
 - Footer Navigation
 - Tabbed Footer
-- Slide-Out Menu
 - Main App View / Entry Point
 - Setup Jest Testing Framework
 - Continuous Integration for Mobile App
