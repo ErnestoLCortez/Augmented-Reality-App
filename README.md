@@ -2,7 +2,7 @@
 #### currently:
 - Allows a user to login via firebase auth
 - Utilize a mobile device's camera
-- Access gps information
+- Access GPS information
 - Display several views
 - Allow navigation across the app's views
 - Connect to a database
@@ -20,6 +20,7 @@
 - Main App View / Entry Point
 - Setup Jest Testing Framework
 - Continuous Integration for Mobile App
+- Continuous Integration for Server
 - Firebase Setup for Third Party Auth
 - Camera View
 - Settings View
@@ -29,7 +30,11 @@
 - Setup MongoDB
 
 ## What are known problems, if any, with your project?
-- Although Firebase auth works with credentials created within its own system, integrating Facebook and Google auth through Firebase with react-native is an issue, react native being the key cause of the issue. We'll need to find a workaround if we want to use Firebase for Google and Facebook.
+- API not fully functional, bug fix moved to milestone 2
+- Mobile app does not make API calls yet
+- Authentication token not being utilized
+- Navigation footer available from login screen
 
 ## How would you improve it if you had more time?
-- Accomplish more of our hand in 2 goals ahead of schedule
+- For this milestone we would have liked to demonstrate functionality of API calls from mobile app.
+This has been moved to milestone 2.
