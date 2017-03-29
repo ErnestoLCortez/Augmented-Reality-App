@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
-import MotManager from 'Sensors'
+import { MotManager } from './Sensors';
 
 export default class SettingsView extends Component {
     constructor(props){
