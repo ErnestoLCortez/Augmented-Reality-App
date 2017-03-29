@@ -19,7 +19,7 @@ setTimeout(() => {
 }, 1000);
 
 
-class MotManager { // no lifecycle needed
+export class MotManager { // no lifecycle needed
   render() {
     const {
       Accelerometer,
