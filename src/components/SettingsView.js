@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
+import firebase from 'firebase';
 
 export default class SettingsView extends Component {
     constructor(props){
@@ -35,7 +36,7 @@ export default class SettingsView extends Component {
                         <Text>Profile</Text>
                     </Separator>
 
-                    <ListItem >
+                    <ListItem onPress={() => firebase.auth().signOut()}>
                         <Text>Sign Out</Text>
                     </ListItem>
                     <ListItem>
