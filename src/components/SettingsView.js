@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
-import { MotManager } from './Sensors';
+import  MotManager from './MotManager';
 
 export default class SettingsView extends Component {
     constructor(props){
         super(props);
-        this.state = {initialPosition: 'unknown', lastPosition: 'unknown'}
+        this.state = {initialPosition: 'unknown', lastPosition: 'unknown'};
         //Binds for onclick
         this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
     }
@@ -64,7 +64,7 @@ export default class SettingsView extends Component {
                     </ListItem>
                     <ListItem>
                         <Text>Sensors</Text>
-                        <MotManager />
+                        <MotManager/>
                     </ListItem>
                 </Content>
             </Container>
