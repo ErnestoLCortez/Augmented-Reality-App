@@ -187,6 +187,8 @@ exports[`Navigator view renders correctly 1`] = `
                       "fontSize": 17,
                       "height": 60,
                       "lineHeight": 24,
+                      "paddingLeft": 5,
+                      "paddingRight": 5,
                       "top": 8,
                     }
                   }
@@ -309,6 +311,8 @@ exports[`Navigator view renders correctly 1`] = `
                       "fontSize": 17,
                       "height": 60,
                       "lineHeight": 24,
+                      "paddingLeft": 5,
+                      "paddingRight": 5,
                       "top": 8,
                     }
                   }
@@ -891,8 +895,7 @@ exports[`Navigator view renders correctly 1`] = `
           renderScrollComponent={[Function]}
           style={
             Object {
-              "marginLeft": -15,
-              "marginRight": -15,
+              "marginHorizontal": -15,
               "marginTop": 15,
             }
           }

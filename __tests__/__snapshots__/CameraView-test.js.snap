@@ -153,8 +153,7 @@ exports[`FormInput component renders correctly 1`] = `
           renderScrollComponent={[Function]}
           style={
             Object {
-              "marginLeft": -15,
-              "marginRight": -15,
+              "marginHorizontal": -15,
               "marginTop": 15,
             }
           }
