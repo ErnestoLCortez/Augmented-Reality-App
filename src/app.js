@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 import { Container, Spinner } from 'native-base';
 import firebase from 'firebase';
 import AppHeader from './components/AppHeader';
 import LoginForm from './components/LoginForm';
 import Navigator from './components/Navigator';
+import getAPIToken from './api/apiAuth';
 
 
 class App extends Component {
@@ -21,8 +23,22 @@ class App extends Component {
       firebase.auth().onAuthStateChanged((user) => {
         if(user){
           this.setState({ loggedIn: true });
+          this.fetchToken(user);
         } else {
           this.setState({ loggedIn: false });
+        }
+      });
+    }
+
+    fetchToken(user){
+      user.getToken().then(async function(idToken){
+        var jwtToken = await getAPIToken(idToken);
+        if (jwtToken){
+          try{
+            await AsyncStorage.setItem('JWT_TOKEN', jwtToken);
+          } catch (error){
+            console.log(error);
+          }
         }
       });
     }
