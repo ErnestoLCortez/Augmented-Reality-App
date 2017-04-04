@@ -14,11 +14,12 @@ export default class SettingsView extends Component {
     testGPSButtonPress(event){
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                //Turns json to string for setting initialPosition state
+                //Sets states from JSON position object
                 this.setState({
                     latitude: position['coords']['latitude'],
                     longitude: position['coords']['longitude']
                 });
+                //Creates var to store details of post
                 var postDetails = {
                     "name": "testPost",
                     "longitude": this.state.longitude,
@@ -26,12 +27,14 @@ export default class SettingsView extends Component {
                     "content": ":^)"
                 };
                 var formBody = [];
+                //Transforms the postDetails to x-www-form-urlencoded format
                 for (var property in postDetails) {
                     var encodedKey = encodeURIComponent(property);
                     var encodedValue = encodeURIComponent(postDetails[property]);
                     formBody.push(encodedKey + "=" + encodedValue);
                 }
                 formBody = formBody.join("&");
+                //Using fetch library to post to backend db using heroku link
                 fetch('https://terrasite.herokuapp.com/api/arposts', {
                     method: 'POST',
                     headers: {
