@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Alert } from 'react-native';
-import { Container, Content, Form, Item, Input, Label, Button, Text, Card } from 'native-base';
+import { Content, Form, Button, Text, Card } from 'native-base';
 import { FormInput } from './FormInput';
 import firebase from 'firebase';
 

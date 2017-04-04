@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
 import { Container, Spinner } from 'native-base';
 import firebase from 'firebase';
 import AppHeader from './components/AppHeader';
