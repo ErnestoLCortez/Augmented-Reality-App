@@ -1,10 +1,9 @@
-package com.mobileapp;
+package com.postar;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.sensors.RNSensorsPackage;
-import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -25,8 +24,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNSensorsPackage(),
-            new RCTCameraPackage()
+            new RNSensorsPackage()
       );
     }
   };
