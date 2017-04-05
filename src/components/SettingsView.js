@@ -45,7 +45,7 @@ export default class SettingsView extends Component {
                 });
             },
             (error) => alert(JSON.stringify(error)),
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+            {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
         );
         this.watchID = navigator.geolocation.watchPosition((position) => {
             //Turns json to string for setting lastPosition state
