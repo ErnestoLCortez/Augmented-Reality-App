@@ -101,9 +101,11 @@ exports[`SettingsView view renders correctly 1`] = `
         tvParallaxProperties={undefined}
       >
         <View
+          onPress={[Function]}
           style={
             Object {
               "alignItems": "center",
+              "backgroundColor": undefined,
               "borderBottomWidth": 0.5,
               "borderColor": "#c9c9c9",
               "flexDirection": "row",
@@ -163,6 +165,7 @@ exports[`SettingsView view renders correctly 1`] = `
           style={
             Object {
               "alignItems": "center",
+              "backgroundColor": undefined,
               "borderBottomWidth": 0.5,
               "borderColor": "#c9c9c9",
               "flexDirection": "row",
@@ -223,6 +226,7 @@ exports[`SettingsView view renders correctly 1`] = `
           style={
             Object {
               "alignItems": "center",
+              "backgroundColor": undefined,
               "borderBottomWidth": 0.5,
               "borderColor": "#c9c9c9",
               "flexDirection": "row",
@@ -318,6 +322,7 @@ exports[`SettingsView view renders correctly 1`] = `
           style={
             Object {
               "alignItems": "center",
+              "backgroundColor": undefined,
               "borderBottomWidth": 0.5,
               "borderColor": "#c9c9c9",
               "flexDirection": "row",
@@ -416,6 +421,7 @@ exports[`SettingsView view renders correctly 1`] = `
           style={
             Object {
               "alignItems": "center",
+              "backgroundColor": undefined,
               "borderBottomWidth": 0.5,
               "borderColor": "#c9c9c9",
               "flexDirection": "row",
@@ -491,6 +497,7 @@ exports[`SettingsView view renders correctly 1`] = `
           style={
             Object {
               "alignItems": "center",
+              "backgroundColor": undefined,
               "borderBottomWidth": 0.5,
               "borderColor": "#c9c9c9",
               "flexDirection": "row",
@@ -673,8 +680,7 @@ exports[`SettingsView view renders correctly 1`] = `
           renderScrollComponent={[Function]}
           style={
             Object {
-              "marginLeft": -15,
-              "marginRight": -15,
+              "marginHorizontal": -15,
               "marginTop": 15,
             }
           }
