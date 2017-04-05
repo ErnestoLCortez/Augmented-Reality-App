@@ -10,8 +10,9 @@
     "firebase": "^3.7.2",
     "native-base": "^2.0.13",
     "react": "~15.4.1",
-    "react-native": "0.42.2",
+    "react-native": "0.40",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-sensors": "^2.1.0",
     "react-timer-mixin": "^0.13.3"
   },
   "devDependencies": {

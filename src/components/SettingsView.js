@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
+import  MotManager from './MotManager';
 import firebase from 'firebase';
+
 
 export default class SettingsView extends Component {
     constructor(props){
         super(props);
-        this.state = {initialPosition: 'unknown', lastPosition: 'unknown'}
+        this.state = {initialPosition: 'unknown', lastPosition: 'unknown'};
         //Binds for onclick
         this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
     }
@@ -61,6 +63,10 @@ export default class SettingsView extends Component {
                     <ListItem>
                         <Text>Last Position</Text>
                         <Text>{this.state.lastPosition}</Text>
+                    </ListItem>
+                    <ListItem>
+                        <Text>Sensors</Text>
+                        <MotManager/>
                     </ListItem>
                 </Content>
             </Container>
