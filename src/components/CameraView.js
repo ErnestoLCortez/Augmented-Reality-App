@@ -60,7 +60,8 @@ export default class CameraView extends Component {
                         text: 'Whoop!',
                         position: 'bottom'
                     });
-                }>
+                }><Icon name="star-half" style={styles.actionButtonIcon} />
+                </ActionButton>
             </Container>
         );
     }
