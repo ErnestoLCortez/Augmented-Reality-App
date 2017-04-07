@@ -1,6 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import { Dimensions, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import ActionButton from 'react-native-action-button';
 import { Container, Content } from 'native-base';
 import Camera from 'react-native-camera';
 
