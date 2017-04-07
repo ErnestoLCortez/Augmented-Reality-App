@@ -16,7 +16,15 @@ class BasicCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+          // <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+          <ActionButton
+              buttonColor="rgba(231,76,60,1)"
+              onPress={() => { Toast.show({
+                  text: 'Whoop!',
+                  position: 'bottom'
+          })}}>
+            <Icon name="star-half" style={styles.actionButtonIcon} />
+          </ActionButton>
         </Camera>
       </View>
     );
@@ -31,6 +39,7 @@ class BasicCamera extends Component {
 
 const styles = StyleSheet.create({
   actionButtonIcon: {
+    flex:1,
     fontSize: 20,
     height: 22,
     color: 'white',
@@ -58,16 +67,7 @@ export default class CameraView extends Component {
     render() {
         return (
             <Container>
-                <BasicCamera>
-                  <ActionButton
-                      buttonColor="rgba(231,76,60,1)"
-                      onPress={() => { Toast.show({
-                          text: 'Whoop!',
-                          position: 'bottom'
-                  })}}>
-                    <Icon name="star-half" style={styles.actionButtonIcon} />
-                  </ActionButton>
-                </BasicCamera>
+                <BasicCamera />
             </Container>
         );
     }
