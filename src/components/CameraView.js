@@ -59,7 +59,8 @@ export default class CameraView extends Component {
                     onPress={()=> Toast.show({
                         text: 'Whoop!',
                         position: 'bottom'
-                })}>
+                    });
+                }>
             </Container>
         );
     }
