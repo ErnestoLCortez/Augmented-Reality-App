@@ -58,16 +58,16 @@ export default class CameraView extends Component {
     render() {
         return (
             <Container>
-                <BasicCamera />
-                <ActionButton
-                    buttonColor="rgba(231,76,60,1)"
-                    onPress={() => { Toast.show({
-                        text: 'Whoop!',
-                        position: 'bottom'
-                    })}}
-                >
-                  <Icon name="star-half" style={styles.actionButtonIcon} />
-                </ActionButton>
+                <BasicCamera>
+                  <ActionButton
+                      buttonColor="rgba(231,76,60,1)"
+                      onPress={() => { Toast.show({
+                          text: 'Whoop!',
+                          position: 'bottom'
+                  })}}>
+                    <Icon name="star-half" style={styles.actionButtonIcon} />
+                  </ActionButton>
+                </BasicCamera>
             </Container>
         );
     }
