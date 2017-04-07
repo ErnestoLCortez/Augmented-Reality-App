@@ -61,11 +61,12 @@ export default class CameraView extends Component {
                 <BasicCamera />
                 <ActionButton
                     buttonColor="rgba(231,76,60,1)"
-                    onPress={()=> Toast.show({
+                    onPress={() => { Toast.show({
                         text: 'Whoop!',
                         position: 'bottom'
-                    });
-                }><Icon name="star-half" style={styles.actionButtonIcon} />
+                    })}}
+                >
+                  <Icon name="star-half" style={styles.actionButtonIcon} />
                 </ActionButton>
             </Container>
         );
