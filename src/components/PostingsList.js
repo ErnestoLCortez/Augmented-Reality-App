@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
-import firebase from 'firebase';
-
+import { Container, Content, ListItem, Text, Separator } from 'native-base';
 
 export default class PostingsList extends Component {
     constructor(props){
