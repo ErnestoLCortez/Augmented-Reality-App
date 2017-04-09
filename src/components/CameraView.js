@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Dimensions, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
-import { Container, Content, Toast } from 'native-base';
+import { Container, Content } from 'native-base';
 import Camera from 'react-native-camera';
 
 class BasicCamera extends Component {
@@ -18,10 +18,7 @@ class BasicCamera extends Component {
           aspect={Camera.constants.Aspect.fill}>
           <ActionButton
               buttonColor="rgba(231,76,60,1)"
-              onPress={() => { Toast.show({
-                  text: 'Whoop!',
-                  position: 'bottom'
-          })}}>
+              onPress={() => { }}>
             <Icon name="star-half" style={styles.actionButtonIcon} />
           </ActionButton>
         </Camera>
