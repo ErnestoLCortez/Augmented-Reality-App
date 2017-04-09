@@ -1,4 +1,4 @@
-package com.mobileapp;
+package com.postar;
 
 import android.app.Application;
 
