@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Dimensions, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { Container, Content } from 'native-base';
 import Camera from 'react-native-camera';
+import ModalForMessage from './ModalForMessage';
 
 class BasicCamera extends Component {
   render() {
@@ -26,12 +27,6 @@ class BasicCamera extends Component {
 }
 
 const styles = StyleSheet.create({
-  actionButtonIcon: {
-    flex:1,
-    fontSize: 20,
-    height: 22,
-    color: 'white',
-  },
   container: {
     flex: 1,
     flexDirection: 'row',
@@ -56,6 +51,7 @@ export default class CameraView extends Component {
         return (
             <Container>
                 <BasicCamera />
+                <ModalForMessage />
             </Container>
         );
     }

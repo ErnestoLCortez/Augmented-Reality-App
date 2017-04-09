@@ -34,4 +34,13 @@ class ModalForMessage extends React.Component {
   }
 }
 
+const styles = StyleSheet.create({
+  actionButtonIcon: {
+    flex:1,
+    fontSize: 20,
+    height: 22,
+    color: 'white',
+  }
+});
+
 export default ModalForMessage;
