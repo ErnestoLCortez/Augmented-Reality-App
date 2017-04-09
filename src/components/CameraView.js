@@ -16,7 +16,6 @@ class BasicCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          // <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
           <ActionButton
               buttonColor="rgba(231,76,60,1)"
               onPress={() => { Toast.show({
