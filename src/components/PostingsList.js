@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Content, ListItem, Text } from 'native-base';
+import { Container } from 'native-base';
 import { Post } from './Post';
 
 export default class PostingsList extends Component {
