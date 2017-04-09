@@ -1,15 +1,19 @@
 import React from 'react';
 import Modal from 'react-native-simple-modal';
 import {Text, TouchableOpacity, View} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ActionButton from 'react-native-action-button';
 
 class ModalForMessage extends React.Component {
   state = {open: false};
   render() {
     return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <TouchableOpacity onPress={() => this.setState({open: true})}>
-        <Text>Open modal</Text>
-      </TouchableOpacity>
+      <ActionButton
+          buttonColor="rgba(231,76,60,1)"
+          onPress={() => this.setState({open: true})}>
+        <Icon name="star-half" style={styles.actionButtonIcon} />
+      </ActionButton>
       <Modal
         offset={this.state.offset}
         open={this.state.open}

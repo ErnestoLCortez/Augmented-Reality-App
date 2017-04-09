@@ -1,8 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
 import { Dimensions, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import ActionButton from 'react-native-action-button';
 import { Container, Content } from 'native-base';
 import Camera from 'react-native-camera';
 
@@ -17,15 +15,9 @@ class BasicCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
         </Camera>
-        <ActionButton
-            buttonColor="rgba(231,76,60,1)"
-            onPress={() => { }}>
-          <Icon name="star-half" style={styles.actionButtonIcon} />
-        </ActionButton>
       </View>
     );
   }
-
   takePicture() {
     this.camera.capture()
       .then((data) => console.log(data))
