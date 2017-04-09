@@ -16,12 +16,12 @@ class BasicCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <ActionButton
-              buttonColor="rgba(231,76,60,1)"
-              onPress={() => { }}>
-            <Icon name="star-half" style={styles.actionButtonIcon} />
-          </ActionButton>
         </Camera>
+        <ActionButton
+            buttonColor="rgba(231,76,60,1)"
+            onPress={() => { }}>
+          <Icon name="star-half" style={styles.actionButtonIcon} />
+        </ActionButton>
       </View>
     );
   }
