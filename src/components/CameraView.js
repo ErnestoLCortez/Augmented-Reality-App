@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
 import Camera from 'react-native-camera';
 import { FormInput } from './FormInput';
+import Modal from 'react-native-simple-modal';
 
 class BasicCamera extends Component {
   render() {
@@ -105,7 +106,3 @@ export default class CameraView extends Component {
         );
     }
 }
-
-
-
-export default ModalForMessage;
