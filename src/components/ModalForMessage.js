@@ -1,11 +1,16 @@
 import React from 'react';
 import Modal from 'react-native-simple-modal';
 import {Text, TouchableOpacity, View} from 'react-native';
+import { Content, Form, Button, Text, Card } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
+import { FormInput } from './FormInput';
 
 class ModalForMessage extends React.Component {
-  state = {open: false};
+  state = {
+    open: false,
+    message: ''
+  };
   render() {
     return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -22,11 +27,20 @@ class ModalForMessage extends React.Component {
         style={{alignItems: 'center'}}>
         <View>
           <Text style={{fontSize: 20, marginBottom: 10}}>ModalForMessage Component</Text>
-          <TouchableOpacity
-            style={{margin: 5}}
-            onPress={() => this.setState({open: false})}>
-            <Text>Close</Text>
-          </TouchableOpacity>
+          <Form>
+            <Card>
+                <FormInput
+                    labelProp='enter a message'
+                    value={this.state.message}
+                    onChangeText={ email => this.setState({ message }) }
+                />
+            </Card>
+            <Card>
+                <Button full success onPress={() => this.setState({open: false})}>
+                    <Text>Post</Text>
+                </Button>
+            </Card>
+          </Form>
         </View>
       </Modal>
     </View>
