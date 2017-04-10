@@ -1,9 +1,11 @@
 'use strict';
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import { Container, Content } from 'native-base';
+import { Dimensions, StyleSheet, Text, TouchableHighlight, View, TouchableOpacity, AppRegistry } from 'react-native';
+import { Container, Content, Form, Button, Text, Card, Fab } from 'native-base';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ActionButton from 'react-native-action-button';
 import Camera from 'react-native-camera';
-import ModalForMessage from './ModalForMessage';
+import { FormInput } from './FormInput';
 
 class BasicCamera extends Component {
   render() {
@@ -26,7 +28,55 @@ class BasicCamera extends Component {
   }
 }
 
+class ModalForMessage extends Component {
+  state = {
+    open: false,
+    message: ''
+  };
+
+  render() {
+    return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <BasicCamera/>
+      <ActionButton
+          buttonColor="rgba(231,76,60,1)"
+          onPress={() => this.setState({open: true})}>
+        <Icon name="star-half" style={styles.actionButtonIcon} />
+      </ActionButton>
+      <Modal
+        offset={this.state.offset}
+        open={this.state.open}
+        modalDidOpen={() => console.log('modal did open')}
+        modalDidClose={() => this.setState({open: false})}
+        style={{alignItems: 'center'}}>
+        <Form>
+          <Card>
+              <FormInput
+                  labelProp='enter a message'
+                  value={this.state.message}
+                  onChangeText={ email => this.setState({ message }) }
+              />
+          </Card>
+          <Card>
+              <Button full success onPress={() => this.setState({open: false})}>
+                  <Text>Post</Text>
+              </Button>
+          </Card>
+        </Form>
+      </Modal>
+    </View>
+    );
+  }
+}
+
+
 const styles = StyleSheet.create({
+  actionButtonIcon: {
+    flex:1,
+    fontSize: 20,
+    height: 22,
+    color: 'white',
+  },
   container: {
     flex: 1,
     flexDirection: 'row',
@@ -50,10 +100,12 @@ export default class CameraView extends Component {
     render() {
         return (
             <Container>
-                <BasicCamera>
-                  <ModalForMessage />
-                </BasicCamera>
+                <ModalForMessage />
             </Container>
         );
     }
 }
+
+
+
+export default ModalForMessage;
