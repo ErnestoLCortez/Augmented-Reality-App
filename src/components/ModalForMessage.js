@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-native-simple-modal';
-import {Text, TouchableOpacity, View} from 'react-native';
+import { TouchableOpacity, View} from 'react-native';
 import { Content, Form, Button, Text, Card } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
