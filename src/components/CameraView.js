@@ -15,7 +15,6 @@ class BasicCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-            <ModalForMessage />
         </Camera>
       </View>
     );
@@ -51,7 +50,9 @@ export default class CameraView extends Component {
     render() {
         return (
             <Container>
-                <BasicCamera />
+                <BasicCamera>
+                  <ModalForMessage />
+                </BasicCamera>
             </Container>
         );
     }
