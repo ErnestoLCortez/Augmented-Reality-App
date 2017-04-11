@@ -32,8 +32,8 @@ class BasicCamera extends Component {
 class ModalForMessage extends Component {
   state = {
     open: false,
-    message: ''
-    active: 'true',
+    message: '',
+    active: 'true'
   };
 
   render() {
