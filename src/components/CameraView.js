@@ -42,17 +42,14 @@ class ModalForMessage extends Component {
       <BasicCamera/>
       <Fab
           active={this.state.active}
-          direction="up"
-          containerStyle={{ marginLeft: 10 }}
+          direction="down"
+          containerStyle={{ marginTop: 30 }}
           style={{ backgroundColor: '#000000' }}
           position="topRight"
           onPress={() => this.setState({ active: !this.state.active })}>
           <Icon name="bonfire" />
           <Button style={{ backgroundColor: '#000000' }} onPress={() => this.setState({open: true})}>
               <Icon name="text" />
-          </Button>
-          <Button style={{ backgroundColor: '#000000' }}>
-              <Icon name="camera" />
           </Button>
       </Fab>
       <Modal
