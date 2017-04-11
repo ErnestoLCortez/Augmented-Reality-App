@@ -1,4 +1,4 @@
-package com.mobileapp;
+package com.postar;
 
 import com.facebook.react.ReactActivity;
 
