@@ -39,31 +39,35 @@ class ModalForMessage extends Component {
     return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <BasicCamera/>
-      <ActionButton
-          buttonColor="rgba(231,76,60,1)"
-          onPress={() => this.setState({open: true})}>
-        <Icon name="star-half" style={styles.actionButtonIcon} />
-      </ActionButton>
+      <Fab
+          active={this.state.active}
+          direction="up"
+          containerStyle={{ marginLeft: 10 }}
+          style={{ backgroundColor: '#000000' }}
+          position="topRight"
+          onPress={() => this.setState({ active: !this.state.active })}>
+          <Icon name="bonfire" />
+          <Button style={{ backgroundColor: '#000000' }} onPress={() => this.setState({open: true})}>
+              <Icon name="text" />
+          </Button>
+          <Button style={{ backgroundColor: '#000000' }}>
+              <Icon name="camera" />
+          </Button>
+      </Fab>
       <Modal
         offset={this.state.offset}
         open={this.state.open}
         modalDidOpen={() => console.log('modal did open')}
         modalDidClose={() => this.setState({open: false})}
         style={{alignItems: 'center'}}>
-        <Form>
           <Card>
               <FormInput
                   labelProp='enter a message'
                   value={this.state.message}
                   onChangeText={ email => this.setState({ message }) }
               />
+              <Button rounded dark buttonText="Post" onPress={() => this.setState({open: false})}/>
           </Card>
-          <Card>
-              <Button full success onPress={() => this.setState({open: false})}>
-                  <Text>Post</Text>
-              </Button>
-          </Card>
-        </Form>
       </Modal>
     </View>
     );
@@ -86,14 +90,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center'
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    color: '#000',
-    padding: 10,
-    margin: 40
   }
 });
 
