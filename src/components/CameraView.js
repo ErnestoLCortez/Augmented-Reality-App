@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, Text, TouchableHighlight, View, TouchableOpacity, AppRegistry } from 'react-native';
+import { Dimensions, StyleSheet, TouchableHighlight, View, TouchableOpacity } from 'react-native';
 import { Container, Content, Form, Button, Text, Card, Fab } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
