@@ -30,13 +30,11 @@ class BasicCamera extends Component {
 }
 
 class ModalForMessage extends Component {
-  constructor() {
-        this.state = {
-            active: 'true',
-            open: false,
-            message: ''
-        };
-    }
+  state = {
+    open: false,
+    message: ''
+    active: 'true',
+  };
 
   render() {
     return (
