@@ -7,7 +7,7 @@ import firebase from 'firebase';
 export default class SettingsView extends Component {
     constructor(props){
         super(props);
-        this.state = {initialPosition: 'unknown', lastPosition: 'unknown'};
+        this.state = {latitude: 'unknown', longitude: 'unknown', lastPosition: 'unknown'}
         //Binds for onclick
         this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
     }
@@ -17,12 +17,38 @@ export default class SettingsView extends Component {
     testGPSButtonPress(event){
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                //Turns json to string for setting initialPosition state
-                var initialPosition = JSON.stringify(position);
-                this.setState({initialPosition});
+                //Sets states from JSON position object
+                this.setState({
+                    latitude: position['coords']['latitude'],
+                    longitude: position['coords']['longitude']
+                });
+                //Creates var to store details of post
+                var postDetails = {
+                    "name": "testPost",
+                    "longitude": this.state.longitude,
+                    "latitude": this.state.latitude,
+                    "content": ":^)"
+                };
+                var formBody = [];
+                //Transforms the postDetails to x-www-form-urlencoded format
+                for (var property in postDetails) {
+                    var encodedKey = encodeURIComponent(property);
+                    var encodedValue = encodeURIComponent(postDetails[property]);
+                    formBody.push(encodedKey + "=" + encodedValue);
+                }
+                formBody = formBody.join("&");
+                //Using fetch library to post to backend db using heroku link
+                fetch('https://terrasite.herokuapp.com/api/arposts', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formBody
+                });
             },
             (error) => alert(JSON.stringify(error)),
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+            {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
         );
         this.watchID = navigator.geolocation.watchPosition((position) => {
             //Turns json to string for setting lastPosition state
@@ -57,12 +83,10 @@ export default class SettingsView extends Component {
                         </Button>
                     </ListItem>
                     <ListItem>
-                        <Text>Current Position</Text>
-                        <Text>{this.state.initialPosition}</Text>
-                    </ListItem>
-                    <ListItem>
-                        <Text>Last Position</Text>
-                        <Text>{this.state.lastPosition}</Text>
+                        <Text>Latitude: </Text>
+                        <Text>{this.state.latitude}</Text>
+                        <Text>Longitude: </Text>
+                        <Text>{this.state.longitude}</Text>
                     </ListItem>
                     <ListItem>
                         <Text>Sensors</Text>
