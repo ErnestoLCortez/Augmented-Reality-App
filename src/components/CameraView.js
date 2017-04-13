@@ -33,7 +33,7 @@ class ModalForMessage extends Component {
   state = {
     open: false,
     message: '',
-    active: 'true'
+    active: 'false'
   };
 
   render() {
@@ -45,11 +45,11 @@ class ModalForMessage extends Component {
           direction="down"
           containerStyle={{ marginTop: 30 }}
           style={{ backgroundColor: '#000000' }}
-          position="topRight"
+          position="bottomRight"
           onPress={() => this.setState({ active: !this.state.active })}>
-          <Icon name="bonfire" />
-          <Button style={{ backgroundColor: '#000000' }} onPress={() => this.setState({open: true})}>
-              <Icon name="text" />
+          <Icon name="ios-add" />
+          <Button rounded dark onPress={() => this.setState({open: true})}>
+              <Icon name="ios-add" />
           </Button>
       </Fab>
       <Modal
@@ -58,14 +58,14 @@ class ModalForMessage extends Component {
         modalDidOpen={() => console.log('modal did open')}
         modalDidClose={() => this.setState({open: false})}
         style={{alignItems: 'center'}}>
-          <Card>
+          <View>
               <FormInput
                   labelProp='enter a message'
                   value={this.state.message}
-                  onChangeText={ email => this.setState({ message }) }
+                  onChangeText={ message => this.setState({ message }) }
               />
               <Button rounded dark buttonText="Post" onPress={() => this.setState({open: false})}/>
-          </Card>
+          </View>
       </Modal>
     </View>
     );
@@ -74,12 +74,6 @@ class ModalForMessage extends Component {
 
 
 const styles = StyleSheet.create({
-  actionButtonIcon: {
-    flex:1,
-    fontSize: 20,
-    height: 22,
-    color: 'white',
-  },
   container: {
     flex: 1,
     flexDirection: 'row',
