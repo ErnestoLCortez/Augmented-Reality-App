@@ -7,6 +7,7 @@ import ActionButton from 'react-native-action-button';
 import Camera from 'react-native-camera';
 import { FormInput } from './FormInput';
 import Modal from 'react-native-simple-modal';
+import firebase from 'firebase';
 
 class BasicCamera extends Component {
   render() {
@@ -33,8 +34,59 @@ class ModalForMessage extends Component {
   state = {
     open: false,
     message: '',
-    active: 'false'
+    active: false
   };
+
+  constructor(props){
+      super(props);
+      this.state = {latitude: 'unknown', longitude: 'unknown', lastPosition: 'unknown', active: false}
+      //Binds for onclick
+      this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
+  }
+  watchID: ?number = null;
+
+  testGPSButtonPress(event){
+      navigator.geolocation.getCurrentPosition(
+          (position) => {
+              //Sets states from JSON position object
+              this.setState({
+                  latitude: position['coords']['latitude'],
+                  longitude: position['coords']['longitude']
+              });
+              //Creates var to store details of post
+              var postDetails = {
+                  "name": "testPost",
+                  "longitude": this.state.longitude,
+                  "latitude": this.state.latitude,
+                  "content": this.state.message
+              };
+              var formBody = [];
+              //Transforms the postDetails to x-www-form-urlencoded format
+              for (var property in postDetails) {
+                  var encodedKey = encodeURIComponent(property);
+                  var encodedValue = encodeURIComponent(postDetails[property]);
+                  formBody.push(encodedKey + "=" + encodedValue);
+              }
+              formBody = formBody.join("&");
+              //Using fetch library to post to backend db using heroku link
+              fetch('https://terrasite.herokuapp.com/api/arposts', {
+                  method: 'POST',
+                  headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                  body: formBody
+              });
+          },
+          (error) => alert(JSON.stringify(error)),
+          {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
+      );
+      this.watchID = navigator.geolocation.watchPosition((position) => {
+          //Turns json to string for setting lastPosition state
+          var lastPosition = JSON.stringify(position);
+          this.setState({lastPosition});
+      });
+  }
 
   render() {
     return (
@@ -42,13 +94,13 @@ class ModalForMessage extends Component {
       <BasicCamera/>
       <Fab
           active={this.state.active}
-          direction="down"
-          containerStyle={{ marginTop: 30 }}
+          direction="up"
+          containerStyle={{ bottom: 40 }}
           style={{ backgroundColor: '#000000' }}
           position="bottomRight"
           onPress={() => this.setState({ active: !this.state.active })}>
           <Icon name="ios-add" />
-          <Button rounded dark onPress={() => this.setState({open: true})}>
+          <Button onPress={() => this.setState({open: true})}>
               <Icon name="ios-add" />
           </Button>
       </Fab>
@@ -64,7 +116,9 @@ class ModalForMessage extends Component {
                   value={this.state.message}
                   onChangeText={ message => this.setState({ message }) }
               />
-              <Button rounded dark buttonText="Post" onPress={() => this.setState({open: false})}/>
+              <Button onPress={() => this.setState({open: false, }), this.testGPSButtonPress}>
+                  <Icon name="ios-add" />
+              </Button>
           </View>
       </Modal>
     </View>
