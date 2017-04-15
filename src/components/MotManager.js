@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text,View} from 'react-native';
+import { Platform, Text,View} from 'react-native';
 var DeviceInfo = require('react-native-device-info');
 
 import RNSensors from 'react-native-sensors';
@@ -10,11 +10,21 @@ const accelerationObservable = new Accelerometer({
 
 var gyroscopeObservable = null;
 
-if(!(DeviceInfo.isEmulator())){
+
+function initializeGyro(){
   gyroscopeObservable = new Gyroscope({
     updateInterval: 2000, // defaults to 100ms
   });
 }
+
+if(Platform.OS === 'android') {
+  if (!(DeviceInfo.isEmulator())) {
+    initializeGyro();
+  }
+} else {
+  initializeGyro();
+}
+
 export default class MotManager extends Component {
   constructor(props) {
     super(props);
