@@ -16,6 +16,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  NSError* configureError;
+  [[GGLContext sharedInstance] configureWithError: &configureError];
+  NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+  
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
@@ -31,6 +35,27 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  BOOL handled = [[GIDSignIn sharedInstance] handleURL:url
+                                     sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                            annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+  return handled;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  if ([[GIDSignIn sharedInstance] handleURL:url
+                          sourceApplication:sourceApplication
+                                 annotation:annotation]) {
+    return YES;
+  }
   return YES;
 }
 
