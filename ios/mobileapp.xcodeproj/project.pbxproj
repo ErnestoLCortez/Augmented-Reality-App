@@ -73,10 +73,10 @@
 		D87236D12EB7405E8F70E063 /* Microsoft Sans Serif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E2554F116A44517882DCC79 /* Microsoft Sans Serif.ttf */; };
 		DE33B64D1EA2C0C400B1149B /* TestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33B64C1EA2C0C400B1149B /* TestFile.swift */; };
 		DEB105371EA2D9D200EAE1D8 /* libRCTFBLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB1051E1EA2D9AC00EAE1D8 /* libRCTFBLogin.a */; };
-		DEB105481EA2DC1300EAE1D8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB105471EA2DC1300EAE1D8 /* Bolts.framework */; };
 		DEB1056F1EA2E70100EAE1D8 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB1056C1EA2E70100EAE1D8 /* FBSDKCoreKit.framework */; };
 		DEB105701EA2E70100EAE1D8 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB1056D1EA2E70100EAE1D8 /* FBSDKLoginKit.framework */; };
 		DEB105711EA2E70100EAE1D8 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB1056E1EA2E70100EAE1D8 /* FBSDKShareKit.framework */; };
+		DEB105731EA2F6B100EAE1D8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB105721EA2F6B100EAE1D8 /* Bolts.framework */; };
 		DEFDB9BF1EA2CC3D0023CA06 /* RNGoogleSignIn in Resources */ = {isa = PBXBuildFile; fileRef = DEFDB9BE1EA2CC3D0023CA06 /* RNGoogleSignIn */; };
 		E07AAFA1C55F99AE293CD035 /* Pods_mobileapp_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02FE9CA108E1A10140FF5789 /* Pods_mobileapp_tvOSTests.framework */; };
 		E0AC4B7341114D2897ADF1A3 /* Andale Mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0833C96E42A49D8BC519BCD /* Andale Mono.ttf */; };
@@ -378,10 +378,10 @@
 		DE33B64B1EA2C0C300B1149B /* mobileapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobileapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE33B64C1EA2C0C400B1149B /* TestFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFile.swift; sourceTree = "<group>"; };
 		DEB105151EA2D9AB00EAE1D8 /* RCTFBLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBLogin.xcodeproj; path = "../node_modules/react-native-facebook-login/RCTFBLogin.xcodeproj"; sourceTree = "<group>"; };
-		DEB105471EA2DC1300EAE1D8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "FacebookSDKs-iOS-4.21.0/Bolts.framework"; sourceTree = "<group>"; };
 		DEB1056C1EA2E70100EAE1D8 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		DEB1056D1EA2E70100EAE1D8 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		DEB1056E1EA2E70100EAE1D8 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		DEB105721EA2F6B100EAE1D8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		DEFDB9BE1EA2CC3D0023CA06 /* RNGoogleSignIn */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RNGoogleSignIn; path = "../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn"; sourceTree = "<group>"; };
 		E3444D531093F985F92EEBB6 /* Pods-mobileapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobileapp/Pods-mobileapp.release.xcconfig"; sourceTree = "<group>"; };
 		E45D508E301549D0BBB1D9CF /* Arial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Arial.ttf; path = "../node_modules/native-base/Fonts/Arial.ttf"; sourceTree = "<group>"; };
@@ -413,6 +413,7 @@
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				DEB1056F1EA2E70100EAE1D8 /* FBSDKCoreKit.framework in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
+				DEB105731EA2F6B100EAE1D8 /* Bolts.framework in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				DEB105711EA2E70100EAE1D8 /* FBSDKShareKit.framework in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
@@ -422,7 +423,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				DEB105481EA2DC1300EAE1D8 /* Bolts.framework in Frameworks */,
 				224BAD8B095A4312A82C3BD3 /* libRCTCamera.a in Frameworks */,
 				971070E35A79452CA912A937 /* libRNSensors.a in Frameworks */,
 				912F27944F4E49E3BE766584 /* libRNDeviceInfo.a in Frameworks */,
@@ -644,10 +644,10 @@
 		B4AF28649A35D6ECF5563E2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DEB105721EA2F6B100EAE1D8 /* Bolts.framework */,
 				DEB1056C1EA2E70100EAE1D8 /* FBSDKCoreKit.framework */,
 				DEB1056D1EA2E70100EAE1D8 /* FBSDKLoginKit.framework */,
 				DEB1056E1EA2E70100EAE1D8 /* FBSDKShareKit.framework */,
-				DEB105471EA2DC1300EAE1D8 /* Bolts.framework */,
 				52D65E5AD6831D381E437922 /* Pods_mobileapp.framework */,
 				5867CD55E7303CAEE0D6FB33 /* libPods-mobileapp-tvOS.a */,
 				02FE9CA108E1A10140FF5789 /* Pods_mobileapp_tvOSTests.framework */,
