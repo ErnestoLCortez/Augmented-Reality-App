@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
 import  MotManager from './MotManager';
 import firebase from 'firebase';
+import FireAuth from 'react-native-firebase-auth';
 
 
 export default class SettingsView extends Component {
@@ -64,7 +65,7 @@ export default class SettingsView extends Component {
                         <Text>Profile</Text>
                     </Separator>
 
-                    <ListItem onPress={() => firebase.auth().signOut()}>
+                    <ListItem onPress={() => FireAuth.logout()}>
                         <Text>Sign Out</Text>
                     </ListItem>
                     <ListItem>
