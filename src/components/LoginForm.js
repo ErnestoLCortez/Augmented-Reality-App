@@ -2,13 +2,27 @@ import React, { Component } from 'react';
 import { Content, Form, Button, Text, Card } from 'native-base';
 import { FormInput } from './FormInput';
 import firebase from 'firebase';
+import FireAuth from 'react-native-firebase-auth';
 
 class LoginForm extends Component {
+
+  constructor(){
+    super();
+    FireAuth.init( {iosClientId: '292158142746-6noqgqae1mmvf1lk521lbu1ug5hlcskc.apps.googleusercontent.com'} );
+  }
+
   state = {
     email: '',
     password: ''
   };
 
+  onGoogleButtonPress(){
+    FireAuth.googleLogin();
+  }
+
+  onFacebookButtonPress(){
+    FireAuth.facebookLogin();
+  }
   onButtonPress() {
     const { email, password } = this.state;
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -19,27 +33,6 @@ class LoginForm extends Component {
       });
   }
 
-
-  onGoogleButtonPress() {
-      var provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('profile');
-      firebase.auth().signInWithPopup(provider)
-      .then(function(result) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = result.credential.accessToken;
-          // The signed-in user info.
-          var user = result.user;
-        alert(user);
-      }).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // The email of the user's account used.
-          var email = error.email;
-          // The firebase.auth.AuthCredential type that was used.
-          var credential = error.credential;
-      });
-  }
 
   render() {
         return (
@@ -67,6 +60,9 @@ class LoginForm extends Component {
                         <Button full info onPress={this.onGoogleButtonPress.bind(this)}>
                             <Text>Log in with Google</Text>
                         </Button>
+                      <Button full info onPress={this.onFacebookButtonPress.bind(this)}>
+                        <Text>Log in with Facebook</Text>
+                      </Button>
                     </Card>
                   </Form>
                 </Content>

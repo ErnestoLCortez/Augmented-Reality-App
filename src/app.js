@@ -7,7 +7,6 @@ import LoginForm from './components/LoginForm';
 import Navigator from './components/Navigator';
 import getAPIToken from './api/apiAuth';
 
-
 class App extends Component {
 
   state = { loggedIn: null };
@@ -20,6 +19,7 @@ class App extends Component {
       storageBucket: 'terrasite-58680.appspot.com',
       messagingSenderId: '292158142746'
     });
+
       firebase.auth().onAuthStateChanged((user) => {
         if(user){
           this.setState({ loggedIn: true });
@@ -28,7 +28,9 @@ class App extends Component {
           this.setState({ loggedIn: false });
         }
       });
+
     }
+
 
     fetchToken(user){
       user.getToken().then(async function(idToken){

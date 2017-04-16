@@ -6,8 +6,8 @@ target 'mobileapp' do
   use_frameworks!
 
   # Pods for mobileapp
-pod 'Google/SignIn'
-pod 'Firebase/Core'
+    pod 'Google/SignIn'
+    pod 'Firebase/Core'
   target 'mobileapp-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
