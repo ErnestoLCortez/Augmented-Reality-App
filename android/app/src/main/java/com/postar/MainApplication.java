@@ -14,6 +14,7 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage;
 
 import java.util.Arrays;
 import java.util.List;
+import com.magus.fblogin.FacebookLoginPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
               new RNGoogleSignInPackage(),
+              new FacebookLoginPackage(),
             new RNDeviceInfo(),
             new RNSensorsPackage(),
             new RCTCameraPackage()
