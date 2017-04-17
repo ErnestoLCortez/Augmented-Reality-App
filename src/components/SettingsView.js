@@ -29,22 +29,14 @@ export default class SettingsView extends Component {
                     "latitude": this.state.latitude,
                     "content": ":^)"
                 };
-                var formBody = [];
-                //Transforms the postDetails to x-www-form-urlencoded format
-                for (var property in postDetails) {
-                    var encodedKey = encodeURIComponent(property);
-                    var encodedValue = encodeURIComponent(postDetails[property]);
-                    formBody.push(encodedKey + "=" + encodedValue);
-                }
-                formBody = formBody.join("&");
                 //Using fetch library to post to backend db using heroku link
                 fetch('https://terrasite.herokuapp.com/api/arposts', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/json',
                     },
-                    body: formBody
+                    body: JSON.stringify(postDetails)
                 });
             },
             (error) => alert(JSON.stringify(error)),
