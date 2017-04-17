@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
+import { Container, Content, ListItem, Text, Separator, Button, AsyncStorage } from 'native-base';
 import  MotManager from './MotManager';
 import firebase from 'firebase';
 
@@ -24,27 +24,23 @@ export default class SettingsView extends Component {
                 });
                 //Creates var to store details of post
                 var postDetails = {
-                    "name": "testPost",
+                    "name": "SettingsView_Test",
                     "longitude": this.state.longitude,
                     "latitude": this.state.latitude,
                     "content": ":^)"
                 };
-                var formBody = [];
-                //Transforms the postDetails to x-www-form-urlencoded format
-                for (var property in postDetails) {
-                    var encodedKey = encodeURIComponent(property);
-                    var encodedValue = encodeURIComponent(postDetails[property]);
-                    formBody.push(encodedKey + "=" + encodedValue);
-                }
-                formBody = formBody.join("&");
+                var backendtoken = AsyncStorage.getItem('JWT_TOKEN');
+                var firebasetoken = AsyncStorage.getItem('ID_TOKEN');
                 //Using fetch library to post to backend db using heroku link
                 fetch('https://terrasite.herokuapp.com/api/arposts', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/json',
+                        'x-access-token': backendtoken,
+                        'idtoken': firebasetoken
                     },
-                    body: formBody
+                    body: JSON.stringify(postDetails)
                 });
             },
             (error) => alert(JSON.stringify(error)),
