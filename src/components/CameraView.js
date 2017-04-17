@@ -90,13 +90,15 @@ class ModalForMessage extends Component {
       <Fab
           active={this.state.active}
           direction="up"
-          containerStyle={{ bottom: 40 }}
           style={{ backgroundColor: '#000000' }}
           position="bottomRight"
           onPress={() => this.setState({ active: !this.state.active })}>
           <Icon name="ios-add" />
-          <Button onPress={() => this.setState({open: true})}>
-              <Icon name="ios-add" />
+          <Button style={{ backgroundColor: '#000000' }} onPress={() => this.setState({open: true})}>
+              <Icon name="ios-camera" style={{ fontSize: 46, color: '#FFFFFF' }}/>
+          </Button>
+          <Button style={{ backgroundColor: '#000000' }} onPress={() => this.setState({open: true})}>
+              <Icon name="ios-star-half" style={{ fontSize: 46, color: '#FFFFFF' }}/>
           </Button>
       </Fab>
       <Modal
@@ -111,8 +113,8 @@ class ModalForMessage extends Component {
                   value={this.state.message}
                   onChangeText={ message => this.setState({ message }) }
               />
-              <Button onPress={() => this.setState({open: false, }), this.testGPSButtonPress}>
-                  <Icon name="ios-add" />
+              <Button onPress={() => this.setState({ open: false, }), this.testGPSButtonPress }>
+                  <Text>PostAR</Text>
               </Button>
           </View>
       </Modal>
