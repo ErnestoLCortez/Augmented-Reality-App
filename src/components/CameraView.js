@@ -55,27 +55,19 @@ class ModalForMessage extends Component {
               });
               //Creates var to store details of post
               var postDetails = {
-                  "name": "testPost",
+                  "name": "testPostLongLatMessage",
                   "longitude": this.state.longitude,
                   "latitude": this.state.latitude,
                   "content": this.state.message
               };
-              var formBody = [];
-              //Transforms the postDetails to x-www-form-urlencoded format
-              for (var property in postDetails) {
-                  var encodedKey = encodeURIComponent(property);
-                  var encodedValue = encodeURIComponent(postDetails[property]);
-                  formBody.push(encodedKey + "=" + encodedValue);
-              }
-              formBody = formBody.join("&");
               //Using fetch library to post to backend db using heroku link
               fetch('https://terrasite.herokuapp.com/api/arposts', {
                   method: 'POST',
                   headers: {
                       'Accept': 'application/json',
-                      'Content-Type': 'application/x-www-form-urlencoded',
+                      'Content-Type': 'application/json',
                   },
-                  body: formBody
+                  body: JSON.stringify(postDetails)
               });
           },
           (error) => alert(JSON.stringify(error)),
