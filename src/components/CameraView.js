@@ -59,12 +59,16 @@ class ModalForMessage extends Component {
                   "latitude": this.state.latitude,
                   "content": this.state.message
               };
+              var backendtoken = AsyncStorage.getItem(JWT_TOKEN);
+              var firebasetoken = firebase.user.getToken();
               //Using fetch library to post to backend db using heroku link
               fetch('https://terrasite.herokuapp.com/api/arposts', {
                   method: 'POST',
                   headers: {
                       'Accept': 'application/json',
                       'Content-Type': 'application/json',
+                      'x-access-token': backendtoken,
+                      'idToken': firebasetoken
                   },
                   body: JSON.stringify(postDetails)
               });
@@ -78,7 +82,6 @@ class ModalForMessage extends Component {
           this.setState({lastPosition});
       });
   }
-
   render() {
     return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

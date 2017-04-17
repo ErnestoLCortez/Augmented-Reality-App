@@ -29,12 +29,16 @@ export default class SettingsView extends Component {
                     "latitude": this.state.latitude,
                     "content": ":^)"
                 };
+                var backendtoken = AsyncStorage.getItem(JWT_TOKEN);
+                var firebasetoken = firebase.user.getToken();
                 //Using fetch library to post to backend db using heroku link
                 fetch('https://terrasite.herokuapp.com/api/arposts', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
+                        'x-access-token': backendtoken,
+                        'idToken': firebasetoken
                     },
                     body: JSON.stringify(postDetails)
                 });
