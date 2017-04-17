@@ -7,7 +7,6 @@ import ActionButton from 'react-native-action-button';
 import Camera from 'react-native-camera';
 import { FormInput } from './FormInput';
 import Modal from 'react-native-simple-modal';
-import firebase from 'firebase';
 
 class BasicCamera extends Component {
   render() {
