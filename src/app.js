@@ -36,6 +36,7 @@ class App extends Component {
         if (jwtToken){
           try{
             await AsyncStorage.setItem('JWT_TOKEN', jwtToken);
+            await AsyncStorage.setItem('ID_TOKEN', idToken);
           } catch (error){
             console.log(error);
           }

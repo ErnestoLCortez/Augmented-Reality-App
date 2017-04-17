@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
+import { Container, Content, ListItem, Text, Separator, Button, AsyncStorage } from 'native-base';
 import  MotManager from './MotManager';
 import firebase from 'firebase';
 
@@ -24,13 +24,13 @@ export default class SettingsView extends Component {
                 });
                 //Creates var to store details of post
                 var postDetails = {
-                    "name": "testPost",
+                    "name": "SettingsView_Test",
                     "longitude": this.state.longitude,
                     "latitude": this.state.latitude,
                     "content": ":^)"
                 };
-                var backendtoken = AsyncStorage.getItem(JWT_TOKEN);
-                var firebasetoken = firebase.user.getToken();
+                var backendtoken = AsyncStorage.getItem('JWT_TOKEN');
+                var firebasetoken = AsyncStorage.getItem('ID_TOKEN');
                 //Using fetch library to post to backend db using heroku link
                 fetch('https://terrasite.herokuapp.com/api/arposts', {
                     method: 'POST',
@@ -38,7 +38,7 @@ export default class SettingsView extends Component {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         'x-access-token': backendtoken,
-                        'idToken': firebasetoken
+                        'idtoken': firebasetoken
                     },
                     body: JSON.stringify(postDetails)
                 });

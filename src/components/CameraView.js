@@ -1,12 +1,13 @@
 'use strict';
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, TouchableHighlight, View, TouchableOpacity } from 'react-native';
+import { Dimensions, StyleSheet, TouchableHighlight, View, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Container, Content, Form, Button, Text, Card, Fab } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
 import Camera from 'react-native-camera';
 import { FormInput } from './FormInput';
 import Modal from 'react-native-simple-modal';
+import firebase from 'firebase';
 
 class BasicCamera extends Component {
   render() {
@@ -54,13 +55,13 @@ class ModalForMessage extends Component {
               });
               //Creates var to store details of post
               var postDetails = {
-                  "name": "testPostLongLatMessage",
+                  "name": "CameraView_Test",
                   "longitude": this.state.longitude,
                   "latitude": this.state.latitude,
                   "content": this.state.message
               };
-              var backendtoken = AsyncStorage.getItem(JWT_TOKEN);
-              var firebasetoken = firebase.user.getToken();
+              var backendtoken = AsyncStorage.getItem('JWT_TOKEN');
+              var firebasetoken = AsyncStorage.getItem('ID_TOKEN');
               //Using fetch library to post to backend db using heroku link
               fetch('https://terrasite.herokuapp.com/api/arposts', {
                   method: 'POST',
@@ -68,7 +69,7 @@ class ModalForMessage extends Component {
                       'Accept': 'application/json',
                       'Content-Type': 'application/json',
                       'x-access-token': backendtoken,
-                      'idToken': firebasetoken
+                      'idtoken': firebasetoken
                   },
                   body: JSON.stringify(postDetails)
               });
