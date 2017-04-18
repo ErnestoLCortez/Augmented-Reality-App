@@ -7,7 +7,6 @@ import ActionButton from 'react-native-action-button';
 import Camera from 'react-native-camera';
 import { FormInput } from './FormInput';
 import Modal from 'react-native-simple-modal';
-import firebase from 'firebase';
 
 class BasicCamera extends Component {
   render() {
@@ -90,15 +89,13 @@ class ModalForMessage extends Component {
       <Fab
           active={this.state.active}
           direction="up"
-          style={{ backgroundColor: '#000000' }}
+          style={{ backgroundColor: '#000000', marginBottom: 200 }}
+          containerStyle={{ bottom: 150 }}
           position="bottomRight"
           onPress={() => this.setState({ active: !this.state.active })}>
           <Icon name="ios-add" />
           <Button style={{ backgroundColor: '#000000' }} onPress={() => this.setState({open: true})}>
-              <Icon name="ios-camera" style={{ fontSize: 46, color: '#FFFFFF' }}/>
-          </Button>
-          <Button style={{ backgroundColor: '#000000' }} onPress={() => this.setState({open: true})}>
-              <Icon name="ios-star-half" style={{ fontSize: 46, color: '#FFFFFF' }}/>
+              <Icon name="ios-star-half" style={{ fontSize: 40, color: '#FFFFFF' }}/>
           </Button>
       </Fab>
       <Modal
@@ -131,7 +128,7 @@ const styles = StyleSheet.create({
   },
   preview: {
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center'
   }
 });
