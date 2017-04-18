@@ -38,8 +38,10 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   
-  return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                  didFinishLaunchingWithOptions:launchOptions];
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                           didFinishLaunchingWithOptions:launchOptions];
+  
+  return YES;
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -48,14 +50,28 @@
   BOOL handled = [[GIDSignIn sharedInstance] handleURL:url
                                      sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
                                             annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
-  return handled;
+  
+  BOOL fbhandled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                               annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+
+  return handled || fbhandled;
 }
+
+//- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options {
+//  return [[FBSDKApplicationDelegate sharedInstance] application:app
+//                                                        openURL:url
+//                                              sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+//                                                     annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+//}
 
   // Facebook SDK
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [FBSDKAppEvents activateApp];
 }
-  
+
+
 - (BOOL)application:(UIApplication *)application
     openURL:(NSURL *)url
     sourceApplication:(NSString *)sourceApplication
@@ -63,8 +79,10 @@
   if ([[GIDSignIn sharedInstance] handleURL:url
                           sourceApplication:sourceApplication
                                  annotation:annotation]) {
+    printf("google happened");
     return YES;
   }
+  printf("@facebook happened");
   return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                  openURL:url
                                        sourceApplication:sourceApplication
