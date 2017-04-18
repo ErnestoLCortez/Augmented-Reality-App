@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PostAR</string>
+    <string name="facebook_app_id">279238499198679</string>
+    <string name="fb_login_protocol_scheme">fb279238499198679</string>
 </resources>

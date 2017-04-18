@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "292158142746",
+    "firebase_url": "https://terrasite-58680.firebaseio.com",
+    "project_id": "terrasite-58680",
+    "storage_bucket": "terrasite-58680.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292158142746:android:62d511419df8f566",
+        "android_client_info": {
+          "package_name": "com.postar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292158142746-g7c64apvd740fvph9g5qqq1hu57gfi21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.postar",
+            "certificate_hash": "36672c04f8add55cde8a7b05316486cf9a346d8d"
+          }
+        },
+        {
+          "client_id": "292158142746-30b7i31o4hftda5ff1v5j8kh0k33s330.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwb_L2qM_x9fjewNavLCO9cvfX8ysuhNo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292158142746-30b7i31o4hftda5ff1v5j8kh0k33s330.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
