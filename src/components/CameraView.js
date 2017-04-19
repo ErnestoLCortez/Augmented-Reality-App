@@ -1,7 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import { Dimensions, StyleSheet, TouchableHighlight, View, TouchableOpacity, AsyncStorage } from 'react-native';
-import { Container, Content, Form, Button, Text, Card, Fab } from 'native-base';
+import { Container, Content, Form, Button, Text, Card, Fab, Toast } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
 import Camera from 'react-native-camera';
@@ -110,7 +110,15 @@ class ModalForMessage extends Component {
                   value={this.state.message}
                   onChangeText={ message => this.setState({ message }) }
               />
-              <Button onPress={() => this.setState({ open: false, }), this.testGPSButtonPress }>
+              <Button onPress={() => {
+                this.setState({ open: false });
+                this.testGPSButtonPress();
+                Toast.show({
+                  text: 'Your message has been posted.',
+                  position: 'bottom',
+                  buttonText: 'YAY'
+                })
+              }}>
                   <Text>PostAR</Text>
               </Button>
           </View>
