@@ -110,7 +110,10 @@ class ModalForMessage extends Component {
                   value={this.state.message}
                   onChangeText={ message => this.setState({ message }) }
               />
-              <Button onPress={() => this.setState({ open: false, }), this.testGPSButtonPress }>
+              <Button onPress={() => {
+                this.setState({ open: false });
+                this.testGPSButtonPress()}
+              }>
                   <Text>PostAR</Text>
               </Button>
           </View>
