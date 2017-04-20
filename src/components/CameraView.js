@@ -42,7 +42,7 @@ class ModalForMessage extends Component {
       this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
   }
   watchID: ?number = null;
-  componentDidMount(){
+  componentWillMount(){
       navigator.geolocation.getCurrentPosition(
           (position) => {
               //Sets states from JSON position object
@@ -50,11 +50,6 @@ class ModalForMessage extends Component {
                   latitude: position['coords']['latitude'],
                   longitude: position['coords']['longitude']
               });
-              //Creates var to store details of post
-              var details = {
-                  "longitude": this.state.longitude,
-                  "latitude": this.state.latitude,
-              };
               var backendtoken = AsyncStorage.getItem('JWT_TOKEN');
               var firebasetoken = AsyncStorage.getItem('ID_TOKEN');
               fetch('https://terrasite.herokuapp.com/api/arposts/' +
