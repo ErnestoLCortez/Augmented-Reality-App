@@ -35,7 +35,6 @@ class ModalForMessage extends Component {
     message: '',
     active: false
   };
-
   constructor(props){
       super(props);
       this.state = {latitude: 'unknown', longitude: 'unknown', lastPosition: 'unknown', active: false}
@@ -43,7 +42,46 @@ class ModalForMessage extends Component {
       this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
   }
   watchID: ?number = null;
-
+  componentDidMount(){
+      navigator.geolocation.getCurrentPosition(
+          (position) => {
+              //Sets states from JSON position object
+              this.setState({
+                  latitude: position['coords']['latitude'],
+                  longitude: position['coords']['longitude']
+              });
+              //Creates var to store details of post
+              var details = {
+                  "longitude": this.state.longitude,
+                  "latitude": this.state.latitude,
+              };
+              var backendtoken = AsyncStorage.getItem('JWT_TOKEN');
+              var firebasetoken = AsyncStorage.getItem('ID_TOKEN');
+              fetch('https://terrasite.herokuapp.com/api/arposts',{
+                  method: 'GET',
+                  headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json',
+                      'x-access-token': backendtoken,
+                      'idtoken': firebasetoken,
+                      'latitude': this.state.latitude,
+                      'longitude': this.state.longitude,
+                      'altitude': 0
+                  }})
+                  .then((response) => response.json())
+                  .then((responseJson) =>{
+                      this.setState({
+                          data: responseJson
+                      });
+                  })
+                  .catch((error) =>{
+                      console.error(error);
+              });
+          },
+          (error) => {alert(JSON.stringify(error))},
+          {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
+      );
+  }
   testGPSButtonPress(event){
       navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -83,6 +121,7 @@ class ModalForMessage extends Component {
       });
   }
   render() {
+    console.log(this.state.data);
     return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <BasicCamera/>
