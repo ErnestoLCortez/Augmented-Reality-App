@@ -45,15 +45,10 @@ class ModalForMessage extends Component {
   componentWillMount(){
       navigator.geolocation.getCurrentPosition(
           (position) => {
-              //Sets states from JSON position object
-              this.setState({
-                  latitude: position['coords']['latitude'],
-                  longitude: position['coords']['longitude']
-              });
               var backendtoken = AsyncStorage.getItem('JWT_TOKEN');
               var firebasetoken = AsyncStorage.getItem('ID_TOKEN');
               fetch('https://terrasite.herokuapp.com/api/arposts/' +
-              this.state.latitude + '/' + this.state.longitude + '/0' ,{
+              position['coords']['latitude'] + '/' + position['coords']['longitude'] + '/0' ,{
                   method: 'GET',
                   headers: {
                       'Accept': 'application/json',
@@ -63,9 +58,7 @@ class ModalForMessage extends Component {
                   }})
                   .then((response) => response.json())
                   .then((responseJson) =>{
-                      this.setState({
-                          data: responseJson
-                      });
+                      console.log(responseJson);
                   })
                   .catch((error) =>{
                       console.error(error);
@@ -114,7 +107,6 @@ class ModalForMessage extends Component {
       });
   }
   render() {
-    console.log(this.state.data);
     return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <BasicCamera/>
