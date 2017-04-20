@@ -57,16 +57,14 @@ class ModalForMessage extends Component {
               };
               var backendtoken = AsyncStorage.getItem('JWT_TOKEN');
               var firebasetoken = AsyncStorage.getItem('ID_TOKEN');
-              fetch('https://terrasite.herokuapp.com/api/arposts',{
+              fetch('https://terrasite.herokuapp.com/api/arposts/' +
+              this.state.latitude + '/' + this.state.longitude + '/0' ,{
                   method: 'GET',
                   headers: {
                       'Accept': 'application/json',
                       'Content-Type': 'application/json',
                       'x-access-token': backendtoken,
-                      'idtoken': firebasetoken,
-                      'latitude': this.state.latitude,
-                      'longitude': this.state.longitude,
-                      'altitude': 0
+                      'idtoken': firebasetoken
                   }})
                   .then((response) => response.json())
                   .then((responseJson) =>{
