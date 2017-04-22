@@ -39,10 +39,10 @@ class ModalForMessage extends Component {
       super(props);
       this.state = {latitude: 'unknown', longitude: 'unknown', lastPosition: 'unknown', active: false}
       //Binds for onclick
-      this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
+      this.submitPosting = this.submitPosting.bind(this);
   }
   watchID: ?number = null;
-  testGPSButtonPress(event){
+  submitPosting(event){
       navigator.geolocation.getCurrentPosition(
           (position) => {
               //Sets states from JSON position object
@@ -110,7 +110,7 @@ class ModalForMessage extends Component {
               />
               <Button onPress={() => {
                 this.setState({ open: false });
-                this.testGPSButtonPress();
+                this.submitPosting();
                 Toast.show({
                   text: 'Your message has been posted.',
                   position: 'bottom',
