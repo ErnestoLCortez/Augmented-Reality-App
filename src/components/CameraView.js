@@ -42,32 +42,6 @@ class ModalForMessage extends Component {
       this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
   }
   watchID: ?number = null;
-  componentWillMount(){
-      navigator.geolocation.getCurrentPosition(
-          (position) => {
-              var backendtoken = AsyncStorage.getItem('JWT_TOKEN');
-              var firebasetoken = AsyncStorage.getItem('ID_TOKEN');
-              fetch('https://terrasite.herokuapp.com/api/arposts/' +
-              position['coords']['latitude'] + '/' + position['coords']['longitude'] + '/0' ,{
-                  method: 'GET',
-                  headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json',
-                      'x-access-token': backendtoken,
-                      'idtoken': firebasetoken
-                  }})
-                  .then((response) => response.json())
-                  .then((responseJson) =>{
-                      console.log(responseJson);
-                  })
-                  .catch((error) =>{
-                      console.error(error);
-              });
-          },
-          (error) => {alert(JSON.stringify(error))},
-          {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
-      );
-  }
   testGPSButtonPress(event){
       navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -109,7 +83,7 @@ class ModalForMessage extends Component {
   render() {
     return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <BasicCamera/>
+    <BasicCamera />
       <Fab
           active={this.state.active}
           direction="up"
@@ -166,6 +140,38 @@ const styles = StyleSheet.create({
 });
 
 export default class CameraView extends Component {
+    constructor(props){
+        super(props);
+        this.state = {data: null}
+    }
+
+    componentWillMount(){
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                var backendtoken = AsyncStorage.getItem('JWT_TOKEN');
+                var firebasetoken = AsyncStorage.getItem('ID_TOKEN');
+                fetch('https://terrasite.herokuapp.com/api/arposts/' +
+                position['coords']['latitude'] + '/' + position['coords']['longitude'] + '/0' ,{
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'x-access-token': backendtoken,
+                        'idtoken': firebasetoken
+                    }})
+                    .then((response) => response.json())
+                    .then((responseJson) =>{
+                        this.setState({data: responseJson});
+                        console.log(this.state.data);
+                    })
+                    .catch((error) =>{
+                        console.error(error);
+                });
+            },
+            (error) => {alert(JSON.stringify(error))},
+            {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
+        );
+    }
     render() {
         return (
             <Container>
