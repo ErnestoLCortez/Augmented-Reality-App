@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Dimensions, StyleSheet, TouchableHighlight, View, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Container, Content, Form, Button, Text, Card, Fab, Toast } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ActionButton from 'react-native-action-button';
 import Camera from 'react-native-camera';
 import { FormInput } from './FormInput';
 import Modal from 'react-native-simple-modal';
@@ -22,6 +21,7 @@ class BasicCamera extends Component {
       </View>
     );
   }
+
   takePicture() {
     this.camera.capture()
       .then((data) => console.log(data))
