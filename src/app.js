@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
-import { Container, Spinner } from 'native-base';
+import { StyleProvider, Container, Spinner } from 'native-base';
 import firebase from 'firebase';
 import AppHeader from './components/AppHeader';
 import LoginForm from './components/LoginForm';
 import Navigator from './components/Navigator';
 import getAPIToken from './api/apiAuth';
+
+import getTheme from '../native-base-theme/components';
+import material from '../native-base-theme/variables/material';
 
 class App extends Component {
 
@@ -61,10 +64,12 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
-        <AppHeader />
-        {this.renderContent()}
-      </Container>
+      <StyleProvider style={getTheme(material)}>
+        <Container>
+          <AppHeader />
+          {this.renderContent()}
+        </Container>
+      </StyleProvider>
     );
   }
 }
