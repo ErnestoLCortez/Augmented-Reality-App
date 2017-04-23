@@ -1,29 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, Text,View} from 'react-native';
-var DeviceInfo = require('react-native-device-info');
-
-import RNSensors from 'react-native-sensors';
-const { Accelerometer, Gyroscope } = RNSensors;
-const accelerationObservable = new Accelerometer({
-  updateInterval: 100, // defaults to 100ms
-});
-
-var gyroscopeObservable = null;
-
-
-function initializeGyro(){
-  gyroscopeObservable = new Gyroscope({
-    updateInterval: 2000, // defaults to 100ms
-  });
-}
-
-if(Platform.OS === 'android') {
-  if (!(DeviceInfo.isEmulator())) {
-    initializeGyro();
-  }
-} else {
-  initializeGyro();
-}
+import { accelerationObservable, gyroscopeObservable } from '../actions/sensors';
 
 export default class MotManager extends Component {
   constructor(props) {

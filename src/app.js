@@ -5,7 +5,7 @@ import firebase from 'firebase';
 import AppHeader from './components/AppHeader';
 import LoginForm from './components/LoginForm';
 import Navigator from './components/Navigator';
-import getAPIToken from './api/apiAuth';
+import getAPIToken from './actions/apiAuth';
 
 class App extends Component {
 
