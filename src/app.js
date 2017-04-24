@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
 import { Container, Spinner } from 'native-base';
 import firebase from 'firebase';
-import AppHeader from './components/AppHeader';
 import LoginForm from './components/LoginForm';
 import Navigator from './components/Navigator';
-import getAPIToken from './api/apiAuth';
+import { getAPIToken } from './actions/apiAuth';
 
 class App extends Component {
 
@@ -61,10 +60,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
-        <AppHeader />
-        {this.renderContent()}
-      </Container>
+        this.renderContent()
     );
   }
 }
