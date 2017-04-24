@@ -60,9 +60,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
-        {this.renderContent()}
-      </Container>
+        this.renderContent()
     );
   }
 }

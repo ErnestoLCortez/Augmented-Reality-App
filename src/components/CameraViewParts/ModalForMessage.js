@@ -115,11 +115,11 @@ const nativeStyles = {
     backgroundColor: '#000000'
   },
   containerStyle: {
-    bottom: 150
+    bottom: 100
   },
   fabStyle: {
     backgroundColor: '#000000',
-    marginBottom: 200 ,
+    marginBottom: 25 ,
   },
   iconStyle: {
     fontSize: 40,
