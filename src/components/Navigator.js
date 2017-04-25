@@ -8,10 +8,10 @@ export default class Navigator extends Component {
     constructor(props){
         super(props);
         this.state = {
-            tab1: false,
-            tab2: true,
+            tab1: true,
+            tab2: false,
             tab3: false,
-            ComponentPicked: PostingsList
+            ComponentPicked: CameraView
         };
     }
     toggleTab1(){

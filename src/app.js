@@ -5,6 +5,25 @@ import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
 import Navigator from './components/Navigator';
 import { getAPIToken } from './actions/apiAuth';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, comibineReducers, compose } from 'redux';
+import { createLogger } from 'redux-logger';
+import reducer from './reducers';
+
+const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__ });
+
+function configureStore(initialState) {
+  const enhancer = compose(
+    applyMiddleware(
+      thunk,
+      loggerMiddleware,
+    ),
+  );
+  return create(reducer, initialState, enhancer);
+}
+
+const store = configureStore();
 
 class App extends Component {
 
