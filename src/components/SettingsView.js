@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
+import { Container, Content, ListItem, Text, Separator, Button, Toast } from 'native-base';
 import { AsyncStorage } from 'react-native'
 import  MotManager from './MotManager';
 import firebase from 'firebase';
 import FireAuth from 'react-native-firebase-auth';
+import { getFBuserName } from '../actions/apiAuth';
 
 
 export default class SettingsView extends Component {
     constructor(props){
         super(props);
-        this.state = {latitude: 'unknown', longitude: 'unknown', lastPosition: 'unknown'}
+        this.state = {latitude: 'unknown', longitude: 'unknown', lastPosition: 'unknown', userName: JSON.stringify(getFBuserName()) }
         //Binds for onclick
         this.testGPSButtonPress = this.testGPSButtonPress.bind(this);
     }
@@ -26,7 +27,7 @@ export default class SettingsView extends Component {
                 });
                 //Creates var to store details of post
                 var postDetails = {
-                    "name": "SettingsView_Test",
+                    "name": this.state.userName,
                     "longitude": this.state.longitude,
                     "latitude": this.state.latitude,
                     "content": ":^)"
@@ -68,7 +69,8 @@ export default class SettingsView extends Component {
                         <Text>Display Name</Text>
                     </Separator>
                     <ListItem last>
-                        <Text>Display Name</Text>
+                        <Text>Display Name: </Text>
+                        <Text>{this.state.userName}</Text>
                     </ListItem>
 
                     <Separator bordered>

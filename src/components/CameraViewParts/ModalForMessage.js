@@ -5,7 +5,7 @@ import { Button, Text, Fab, Toast } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { FormInput } from '../FormInput';
 import Modal from 'react-native-simple-modal';
-import { savePost, userFB } from '../../actions/apiAuth';
+import { savePost } from '../../actions/apiAuth';
 
 
 export default class ModalForMessage extends Component {
@@ -39,7 +39,7 @@ export default class ModalForMessage extends Component {
         });
         //Creates var to store details of post
         savePost({
-          "name": getUser(),
+          "name": "CameraViewTestName",
           "longitude": this.state.longitude,
           "latitude": this.state.latitude,
           "content": this.state.message

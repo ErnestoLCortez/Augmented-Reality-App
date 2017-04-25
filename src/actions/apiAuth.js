@@ -25,7 +25,6 @@ export const savePost = async function savePost(postDetails){
     var backendToken = null;
     var firebaseToken = null;
   try {
-
     backendToken = AsyncStorage.getItem('JWT_TOKEN');
     firebaseToken = AsyncStorage.getItem('ID_TOKEN');
   } catch(err) {
@@ -52,8 +51,7 @@ export const savePost = async function savePost(postDetails){
     })
 };
 
-export const userFB = async function savePost(){
-    var backendToken = null;
+export const getFBuserName = async function getFBuserName(){
     var firebaseToken = null;
   try {
     firebaseToken = AsyncStorage.getItem('ID_TOKEN');
