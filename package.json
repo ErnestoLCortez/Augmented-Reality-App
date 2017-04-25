@@ -7,12 +7,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "bugsnag-react-native": "^2.2.0",
     "firebase": "^3.7.2",
     "native-base": "2.0.13",
     "react": "~15.4.1",
     "react-native": "0.40",
-    "react-native-action-button": "^2.6.5",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
     "react-native-device-info": "^0.10.2",
     "react-native-facebook-login": "^1.5.0",
