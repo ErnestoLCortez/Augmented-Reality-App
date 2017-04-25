@@ -13,11 +13,13 @@ It sets up the API flow that will allow the app to authenticate with the server,
 ## What were you able to complete for this handin?
 #### Mobile App:
 - Implemented Facebook login
-- Posts within certain radius are represented by a marker on the camera view
+- Form was created to allow user to input a message to send
+- Messages sent using the app post to the database
+- Posts within certain radius are represented by a marker on the camera view (not done yet, but hopefully before class)
 - Message pops up when user submits a post
 
 #### Backend:
-- Various bug fixes & cleaned up code
+- Various bug fixes and cleaned up code
 
 ## What are known problems, if any, with your project?
 #### Mobile App:
