@@ -19,7 +19,7 @@ export default class BasicCamera extends Component {
 
   takePicture() {
     this.camera.capture()
-      .then((data) => console.log(data))
+      .then((data) => console.log(data)) // Instead of logging to console, could be stored.
       .catch(err => console.error(err));
   }
 }

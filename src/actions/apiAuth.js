@@ -25,6 +25,7 @@ export const savePost = async function savePost(postDetails){
     var backendToken = null;
     var firebaseToken = null;
   try {
+
     backendToken = AsyncStorage.getItem('JWT_TOKEN');
     firebaseToken = AsyncStorage.getItem('ID_TOKEN');
   } catch(err) {
@@ -44,6 +45,33 @@ export const savePost = async function savePost(postDetails){
     .then((response) => response.json())
     .then((responseJson) => {
       return responseJson.token;
+    })
+    .catch((error) => {
+      console.log(error);
+      return null;
+    })
+};
+
+export const userFB = async function savePost(){
+    var backendToken = null;
+    var firebaseToken = null;
+  try {
+    firebaseToken = AsyncStorage.getItem('ID_TOKEN');
+  } catch(err) {
+    console.log(err);
+  }
+  //Using fetch library to post to backend db using heroku link
+  return fetch('https://graph.facebook.com/me', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'access_token': firebaseToken
+    }
+  })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson;
     })
     .catch((error) => {
       console.log(error);

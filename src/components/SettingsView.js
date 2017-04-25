@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Content, ListItem, Text, Separator, Button, AsyncStorage } from 'native-base';
+import { Container, Content, ListItem, Text, Separator, Button } from 'native-base';
+import { AsyncStorage } from 'react-native'
 import  MotManager from './MotManager';
 import firebase from 'firebase';
 import FireAuth from 'react-native-firebase-auth';
@@ -60,13 +61,12 @@ export default class SettingsView extends Component {
                     <Separator bordered>
                         <Text>Profile</Text>
                     </Separator>
-
                     <ListItem onPress={() => FireAuth.logout()}>
                         <Text>Sign Out</Text>
                     </ListItem>
-                    <ListItem>
-                        <Text>Account</Text>
-                    </ListItem>
+                    <Separator bordered>
+                        <Text>Display Name</Text>
+                    </Separator>
                     <ListItem last>
                         <Text>Display Name</Text>
                     </ListItem>
@@ -82,11 +82,15 @@ export default class SettingsView extends Component {
                     <ListItem>
                         <Text>Latitude: </Text>
                         <Text>{this.state.latitude}</Text>
+                    <ListItem>
+                    </ListItem>
                         <Text>Longitude: </Text>
                         <Text>{this.state.longitude}</Text>
                     </ListItem>
                     <ListItem>
                         <Text>Sensors</Text>
+                    </ListItem>
+                    <ListItem>
                         <MotManager/>
                     </ListItem>
                 </Content>
