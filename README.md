@@ -36,3 +36,4 @@ It sets up the API flow that will allow the app to authenticate with the server,
 
 #### Backend:
 - Make more security considerations as far as encryption is concerned.
+- Finish up the landing page with app images and team information/pictures/links
