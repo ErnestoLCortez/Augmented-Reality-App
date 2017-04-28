@@ -9,20 +9,15 @@ export default class PostingsList extends Component {
     constructor(props){
         super(props);
         this.state = {
-            data: []
+            latitude: null, longitude: null
         }
     }
-    componentDidMount(){
-        // fetch('https://terrasite.herokuapp.com/api/arposts')
-        //     .then((response) => response.json())
-        //     .then((responseJson) =>{
-        //         this.setState({
-        //             data: responseJson
-        //         })
-        //     })
-        //     .catch((error) =>{
-        //         console.error(error);
-        //     });
+    componentWillMount(){
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.setState({latitude: position['coords']['latitude'],
+                longitude: position['coords']['longitude']})
+        });
     }
     render() {
         // const posts = this.state.data.map((object, index) => {
@@ -36,8 +31,8 @@ export default class PostingsList extends Component {
             <Container>
             <MapView style={styles.map}
                 initialRegion={{
-              latitude: 37.78825,
-              longitude: -122.4324,
+              latitude: this.state.latitude,
+              longitude: this.state.longitude,
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}
