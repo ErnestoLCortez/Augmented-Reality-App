@@ -127,6 +127,10 @@ android {
 
 
 dependencies {
+    compile(project(':react-native-maps')){
+        exclude group: "com.google.android.gms"
+    }
+    compile 'com.google.android.gms:play-services-maps:10.0.1'
     compile project(':react-native-vector-icons')
     compile(project(":react-native-google-sign-in")) { // ADD this
         exclude group: "com.google.android.gms"
