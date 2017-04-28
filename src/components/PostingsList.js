@@ -29,14 +29,15 @@ export default class PostingsList extends Component {
         // });
         return (
             <Container>
-            <MapView style={styles.map}
-                initialRegion={{
-              latitude: this.state.latitude,
-              longitude: this.state.longitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-            />
+                <MapView style={styles.map}
+                    initialRegion={{
+                        latitude: this.state.latitude,
+                        longitude: this.state.longitude,
+                        latitudeDelta: 0.0042,
+                        longitudeDelta: 0.0021,
+                    }}>
+
+                </MapView>
             </Container>
         );
     }
