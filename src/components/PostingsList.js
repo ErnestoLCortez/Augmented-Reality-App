@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import {StyleSheet, Dimensions} from 'react-native'
 import { Container } from 'native-base';
+import MapView from 'react-native-maps'
+var {height, width } = Dimensions.get('window');
 import { Post } from './Post';
-import MapView from 'react-native-maps';
 
 export default class PostingsList extends Component {
     constructor(props){
@@ -32,15 +34,21 @@ export default class PostingsList extends Component {
         // });
         return (
             <Container>
-            <MapView
+            <MapView style={styles.map}
                 initialRegion={{
-                  latitude: 37.78825,
-                  longitude: -122.4324,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421,
-                }}
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
             />
             </Container>
         );
     }
 }
+var styles = StyleSheet.create({
+  map:{
+      width:width,
+      height: height
+  }
+});
