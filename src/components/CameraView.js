@@ -1,33 +1,34 @@
 'use strict';
 import React, { Component } from 'react';
-import { StyleSheet, DeviceEventEmitter, NativeModules } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Container } from 'native-base';
 import ModalForMessage from './CameraViewParts/ModalForMessage';
 import BasicCamera from './CameraViewParts/BasicCamera';
 import ArObject from './ArObject';
-let SensorManager = NativeModules.SensorManager;
-
 import { connect } from 'react-redux';
 import { addArObject, clearArObjects, updateGyroData } from '../actions/augmented';
 import { mixins, variables } from '../constants';
+import { Gyroscope } from 'react-native-sensors';
 
+var gyroscopeObservable;
 class CameraView extends Component {
 
   constructor(props) {
     super(props);
-
-    SensorManager.startGyroscope(50);
+    gyroscopeObservable = require('../lib/sensors').gyroscopeObservable();
+      //new Gyroscope({ updateInterval: 50 });
     this.renderARObjects = this.renderARObjects.bind(this);
     this.pullARObjects();
   }
 
   componentDidMount() {
     //this.props.clearArObjects();
-    DeviceEventEmitter.addListener('Gyroscope', this.props.updateGyroData);
+    gyroscopeObservable.subscribe(this.props.updateGyroData);
   }
   componentWillUnmount() {
+    gyroscopeObservable.stop();
     this.props.clearArObjects();
-    SensorManager.stopGyroscope();
+    //SensorManager.stopGyroscope();
   }
   componentDidUpdate(prevProps, prevState) {
 

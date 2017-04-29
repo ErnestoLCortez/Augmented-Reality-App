@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Content, ListItem, Text, Separator, Button, AsyncStorage } from 'native-base';
 import  MotManager from './MotManager';
-import firebase from 'firebase';
 import FireAuth from 'react-native-firebase-auth';
 
 
