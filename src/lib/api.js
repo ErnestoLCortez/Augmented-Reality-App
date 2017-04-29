@@ -50,3 +50,31 @@ export const savePost = async function savePost(postDetails){
       return null;
     })
 };
+
+export const fetchPoints = async function fetchPoints(location){
+  var backendToken = null;
+  var firebaseToken = null;
+  try {
+    backendToken = AsyncStorage.getItem('JWT_TOKEN');
+    firebaseToken = AsyncStorage.getItem('ID_TOKEN');
+  } catch(err) {
+    console.log(err);
+  }
+  return fetch('https://terrasite.herokuapp.com/api/arposts/' + location.y + '/' + location.x + '/' + location.z, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'x-access-token': backendToken,
+      'idtoken': firebaseToken
+    },
+  })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((error) => {
+      console.log(error);
+      return null;
+    })
+};

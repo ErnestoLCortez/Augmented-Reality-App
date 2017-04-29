@@ -1,10 +1,8 @@
 import * as types from '../actions/actionTypes';
-import { variables } from '../constants';
 import {
   MOVE_FACTOR_X,
   MOVE_FACTOR_Y
 } from '../constants';
-import createReducer from './createReducer';
 
 const initialState = {
   arObjects: [

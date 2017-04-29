@@ -5,7 +5,7 @@ import { Button, Text, Fab, Toast } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { FormInput } from '../FormInput';
 import Modal from 'react-native-simple-modal';
-import { savePost } from '../../actions/apiAuth';
+import { savePost } from '../../lib/api';
 
 
 export default class ModalForMessage extends Component {

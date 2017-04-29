@@ -4,7 +4,7 @@ import { Container, Spinner } from 'native-base';
 import Firebase from './middleware/FirebaseInit';
 import LoginForm from './components/LoginForm';
 import Navigator from './components/Navigator';
-import { getAPIToken } from './actions/apiAuth';
+import { getAPIToken } from './lib/api';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

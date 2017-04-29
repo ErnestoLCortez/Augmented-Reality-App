@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, Text,View} from 'react-native';
-import { accelerationObservable, gyroscopeObservable } from '../actions/sensors';
+import { accelerationObservable, gyroscopeObservable } from '../lib/sensors';
 
 export default class MotManager extends Component {
   constructor(props) {

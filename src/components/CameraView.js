@@ -5,15 +5,8 @@ import { Container } from 'native-base';
 import ModalForMessage from './CameraViewParts/ModalForMessage';
 import BasicCamera from './CameraViewParts/BasicCamera';
 import ArObject from './ArObject';
+let SensorManager = NativeModules.SensorManager;
 
-var SensorManager = NativeModules.SensorManager;
-
-import {
-  GYRO_MOVE_THRESHOLD_X,
-  GYRO_MOVE_THRESHOLD_Y,
-  MOVE_FACTOR_X,
-  MOVE_FACTOR_Y,
-} from '../constants';
 import { connect } from 'react-redux';
 import { addArObject, clearArObjects, updateGyroData } from '../actions/augmented';
 import { mixins, variables } from '../constants';
@@ -24,22 +17,17 @@ class CameraView extends Component {
     super(props);
 
     SensorManager.startGyroscope(50);
-    this.handleGameStart();
     this.renderARObjects = this.renderARObjects.bind(this);
+    this.pullARObjects();
   }
 
   componentDidMount() {
     //this.props.clearArObjects();
-
-    //gyroscopeObservable.map((x, y, z) => updateGyroData({x, y, z}));
     DeviceEventEmitter.addListener('Gyroscope', this.props.updateGyroData);
   }
   componentWillUnmount() {
-    //gyroscopeObservable.stop();
     this.props.clearArObjects();
     SensorManager.stopGyroscope();
-    // timer.clearInterval(this, 'arObjectGenerator');
-    // timer.clearInterval(this, 'countdown');
   }
   componentDidUpdate(prevProps, prevState) {
 
@@ -49,14 +37,7 @@ class CameraView extends Component {
       this.props.arObjects.length != nextProps.arObjects.length
     );
   }
-  handleGameStart() {
-    this.startArObjectTimer();
-  }
-  startArObjectTimer() {
-
-    //let startingPosX = Math.random() * variables.SCREEN_WIDTH * (Math.random() > 0.5 ? -1 : 1) + (variables.SCREEN_WIDTH * .5);
-    //let startingPosY = Math.random() * variables.SCREEN_HEIGHT * .75 * (Math.random() > 0.5 ? -1 : 1) + (variables.SCREEN_HEIGHT * .8);
-
+  pullARObjects() {
     this.props.addArObject({
       imageUrl: '../assets/images/marker.png',
       startingPosX: 40,
