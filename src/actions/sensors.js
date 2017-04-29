@@ -23,4 +23,4 @@ if(Platform.OS === 'android') {
   initializeGyro();
 }
 
-export { accelerationObservable, gyroscopeObservable }
+export { accelerationObservable, gyroscopeObservable };

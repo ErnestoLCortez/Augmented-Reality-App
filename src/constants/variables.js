@@ -6,8 +6,5 @@ export const HEADER_HEIGHT = STATUS_BAR_HEIGHT;
 
 export const AR_OBJECT_SIZE = height * .09;
 
-export const BUTTON_HEIGHT = height * .075;
-export const BUTTON_WIDTH = width * .25;
-
 export const SCREEN_HEIGHT = height;
 export const SCREEN_WIDTH = width;

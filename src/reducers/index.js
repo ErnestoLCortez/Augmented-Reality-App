@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import * as augmented from './augmented';
+import augmented from './augmented';
 
-export default combineReducers(Object.assign(
+export default combineReducers({
   augmented,
-));
+});

@@ -1,8 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import { StyleSheet, Image, View } from 'react-native';
+import { connect } from 'react-redux';
 import { mixins, variables } from '../constants';
+import { removeArObject } from '../actions/augmented';
 
-export default class ArObject extends Component {
+class ArObject extends Component {
 
   constructor(props){
     super(props);
@@ -34,7 +36,7 @@ export default class ArObject extends Component {
     return (
       <View style={styles.root}>
         <Image
-          source={require('../assests/images/marker.png')}
+          source={require('../assets/images/marker.png')}
           resizeMode='contain'
           style={[
             styles.arTarget,
@@ -60,3 +62,20 @@ const styles = StyleSheet.create({
     width: variables.AR_OBJECT_SIZE
   }
 });
+
+function mapStateToProps({ augmented }) {
+  return {
+    ...augmented
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    removeArObject: (arObjIndex) => dispatch(removeArObject(arObjIndex))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ArObject);
