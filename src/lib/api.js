@@ -51,30 +51,35 @@ export const savePost = async function savePost(postDetails){
     })
 };
 
-export const fetchPoints = async function fetchPoints(location){
-  var backendToken = null;
-  var firebaseToken = null;
-  try {
-    backendToken = AsyncStorage.getItem('JWT_TOKEN');
-    firebaseToken = AsyncStorage.getItem('ID_TOKEN');
-  } catch(err) {
-    console.log(err);
-  }
-  return fetch('https://terrasite.herokuapp.com/api/arposts/' + location.y + '/' + location.x + '/' + location.z, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'x-access-token': backendToken,
-      'idtoken': firebaseToken
+export const fetchPoints = async function fetchPoints(){
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      var backendToken = null;
+      var firebaseToken = null;
+      try {
+        backendToken = AsyncStorage.getItem('JWT_TOKEN');
+        firebaseToken = AsyncStorage.getItem('ID_TOKEN');
+      } catch(err) {
+        console.log(err);
+      }
+      fetch('https://terrasite.herokuapp.com/api/arposts/' +
+        position['coords']['latitude'] + '/' + position['coords']['longitude'] + '/0' ,{
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'x-access-token': backendToken,
+          'idtoken': firebaseToken
+        }})
+        .then((response) => response.json())
+        .then((responseJson) =>{
+          return responseJson;
+        })
+        .catch((error) =>{
+          console.error(error);
+        });
     },
-  })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      return responseJson;
-    })
-    .catch((error) => {
-      console.log(error);
-      return null;
-    })
+    (error) => {alert(JSON.stringify(error))},
+    {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
+  );
 };
