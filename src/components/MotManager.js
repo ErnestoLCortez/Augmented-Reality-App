@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, Text,View} from 'react-native';
+import { Text,View} from 'react-native';
 import { accelerationObservable } from '../lib/sensors';
 var gyroscopeObservable = require('../lib/sensors').gyroscopeObservable();
 

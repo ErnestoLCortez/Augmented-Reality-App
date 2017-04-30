@@ -138,7 +138,6 @@ android {
 
 
 dependencies {
-    compile project(':react-native-sensor-manager')
     compile project(':react-native-vector-icons')
     compile(project(":react-native-google-sign-in")) { // ADD this
         exclude group: "com.google.android.gms"

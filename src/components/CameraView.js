@@ -8,7 +8,6 @@ import ArObject from './ArObject';
 import { connect } from 'react-redux';
 import { addArObject, clearArObjects, updateGyroData } from '../actions/augmented';
 import { mixins, variables } from '../constants';
-import { Gyroscope } from 'react-native-sensors';
 
 var gyroscopeObservable;
 class CameraView extends Component {
@@ -16,7 +15,6 @@ class CameraView extends Component {
   constructor(props) {
     super(props);
     gyroscopeObservable = require('../lib/sensors').gyroscopeObservable();
-      //new Gyroscope({ updateInterval: 50 });
     this.renderARObjects = this.renderARObjects.bind(this);
     this.pullARObjects();
   }
@@ -28,7 +26,6 @@ class CameraView extends Component {
   componentWillUnmount() {
     gyroscopeObservable.stop();
     this.props.clearArObjects();
-    //SensorManager.stopGyroscope();
   }
   componentDidUpdate(prevProps, prevState) {
 
