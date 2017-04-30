@@ -3,6 +3,10 @@ import { StyleSheet, View } from 'react-native';
 import Camera from 'react-native-camera';
 
 export default class BasicCamera extends Component {
+  constructor(props){
+    super(props);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -12,6 +16,7 @@ export default class BasicCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
+          {this.props.children}
         </Camera>
       </View>
     );
