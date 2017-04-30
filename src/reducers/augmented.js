@@ -14,10 +14,8 @@ const initialState = {
 };
 
 export default function augmented(state = initialState, action) {
-  console.log('***reducer called***');
   switch(action.type) {
     case types.ADD_AR_OBJECT:
-      console.log('***addArObject REDUCER called***');
       return {
         ...state,
         arObjects: [

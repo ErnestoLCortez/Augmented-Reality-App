@@ -1,16 +1,11 @@
 'use strict';
 import React, { Component } from 'react';
-
-import { StyleSheet } from 'react-native';
-import { View, AsyncStorage } from 'react-native';
-
 import { Container } from 'native-base';
 import ModalForMessage from './CameraViewParts/ModalForMessage';
 import BasicCamera from './CameraViewParts/BasicCamera';
 import ArObject from './ArObject';
 import { connect } from 'react-redux';
 import { addArObject, clearArObjects, updateGyroData } from '../actions/augmented';
-import { mixins, variables } from '../constants';
 
 
 var gyroscopeObservable;
@@ -48,11 +43,8 @@ class CameraView extends Component {
   }
 
   renderARObjects(){
-    console.log('renderARObjects********************');
-    console.log(this.props.arObjects);
     if(this.props.arObjects){
-      console.log('***RENDERING AROBJECT****');
-      this.props.arObjects.map((arObj, i) => {
+      return this.props.arObjects.map((arObj, i) => {
         return (
           <ArObject
             key={i}
@@ -72,17 +64,7 @@ class CameraView extends Component {
         <ModalForMessage>
           <BasicCamera>
             {
-              this.props.arObjects.map((arObj, i) => {
-                return (
-                  <ArObject
-                    key={'arObject-' + i}
-                    index={i}
-                    imageUrl={arObj.imageUrl}
-                    startingPosX={arObj.startingPosX}
-                    startingPosY={arObj.startingPosY}
-                  />
-                );
-              })
+              this.renderARObjects()
             }
           </BasicCamera>
         </ModalForMessage>
@@ -90,25 +72,6 @@ class CameraView extends Component {
     );
   }
 }
-
-
-const styles = StyleSheet.create({
-  root: {
-    ...mixins.defaultPage,
-    ...mixins.column
-  },
-  arDisplay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    flex: 1
-  },
-  preview: {
-    position: 'absolute',
-    height: variables.SCREEN_HEIGHT,
-    width: variables.SCREEN_WIDTH
-  },
-});
 
 function mapStateToProps({ augmented }) {
   return {

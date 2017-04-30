@@ -5,7 +5,6 @@ import {
 } from '../constants';
 
 export function addArObject(arObject) {
-  console.log('***addArObject ACTION called***');
   return dispatch => {
     dispatch({
       type: types.ADD_AR_OBJECT,
