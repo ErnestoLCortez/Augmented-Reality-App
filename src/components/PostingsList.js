@@ -9,10 +9,10 @@ export default class PostingsList extends Component {
     constructor(props){
         super(props);
         this.state = {
-            latitude: null, longitude: null
+            latitude: 0.0, longitude: 0.0
         }
     }
-    componentWillMount(){
+    componentDidMount(){
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 this.setState({latitude: position['coords']['latitude'],
