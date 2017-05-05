@@ -4,7 +4,6 @@ import PostingsList from './PostingsList';
 import SettingsView from './SettingsView';
 import CameraView from './CameraView';
 import { connect } from 'react-redux';
-
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 
@@ -55,8 +54,8 @@ class Navigator extends Component {
               <Text active={this.state.tab1}>Camera</Text>
             </Button>
             <Button active={this.state.tab2} onPress={() => this.toggleTab2()} >
-              <Icon active={this.state.tab2} name="ios-person" />
-              <Text active={this.state.tab2}>Posts</Text>
+              <Icon active={this.state.tab2} name="map" />
+              <Text active={this.state.tab2}>Map</Text>
             </Button>
             <Button active={this.state.tab3} onPress={() => this.toggleTab3()} >
               <Icon active={this.state.tab3} name="settings" />

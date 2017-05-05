@@ -16,6 +16,7 @@
     "react-native-facebook-login": "^1.5.0",
     "react-native-firebase-auth": "git+https://github.com/SolidStateGroup/react-native-firebase-auth.git",
     "react-native-google-sign-in": "0.0.14",
+    "react-native-maps": "^0.14.0",
     "react-native-sensors": "^2.1.0",
     "react-native-simple-modal": "^5.0.0",
     "react-native-vector-icons": "^4.0.1",

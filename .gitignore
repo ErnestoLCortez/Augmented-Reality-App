@@ -52,6 +52,9 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 
+#Android secret
+secrets.xml
+
 # dotenv environment variables file
 .env
 
