@@ -23,7 +23,7 @@ class CameraView extends Component {
     gyroscopeObservable.subscribe(this.props.updateGyroData);
   }
   componentWillUnmount() {
-    gyroscopeObservable.stop();
+
     this.props.clearArObjects();
   }
   componentDidUpdate(prevProps, prevState) {
