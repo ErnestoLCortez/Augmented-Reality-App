@@ -6,11 +6,6 @@ import LoginForm from './components/LoginForm';
 import Navigator from './components/Navigator';
 import { getAPIToken } from './lib/api';
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { ActionCreators } from './actions';
-
-
 class PostAR extends Component {
 
   constructor(){
@@ -61,12 +56,4 @@ class PostAR extends Component {
   }
 }
 
-function mapStateToProps() {
-  return {};
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ActionCreators, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostAR);
+export default PostAR;
