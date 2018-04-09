@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text,View} from 'react-native';
+var DeviceInfo = require('react-native-device-info');
 
 import RNSensors from 'react-native-sensors';
 const { Accelerometer, Gyroscope } = RNSensors;
@@ -7,10 +8,13 @@ const accelerationObservable = new Accelerometer({
   updateInterval: 100, // defaults to 100ms
 });
 
-const gyroscopeObservable = new Gyroscope({
-  updateInterval: 2000, // defaults to 100ms
-});
+var gyroscopeObservable = null;
 
+if(!(DeviceInfo.isEmulator())){
+  gyroscopeObservable = new Gyroscope({
+    updateInterval: 2000, // defaults to 100ms
+  });
+}
 export default class MotManager extends Component {
   constructor(props) {
     super(props);
@@ -34,10 +38,12 @@ export default class MotManager extends Component {
         acceleration,
       }));
 
-    gyroscopeObservable
-      .subscribe(gyroscope => this.setState({
-        gyroscope,
-      }));
+    if(gyroscopeObservable) {
+      gyroscopeObservable
+        .subscribe(gyroscope => this.setState({
+          gyroscope,
+        }));
+    }
   }
 
   render() {
@@ -58,7 +64,7 @@ export default class MotManager extends Component {
           Gyroscope:
         </Text>
         <Text>
-          {gyroscope.x + '/' + gyroscope.y + '/' + gyroscope.z}
+          {gyroscopeObservable ? gyroscope.x + '/' + gyroscope.y + '/' + gyroscope.z : 'Gyroscope not found!'}
         </Text>
       </View>
     );
@@ -66,6 +72,8 @@ export default class MotManager extends Component {
 
   componentWillUnmount() {
     accelerationObservable.stop();
-    gyroscopeObservable.stop();
+    if(gyroscopeObservable){
+      gyroscopeObservable.stop();
+    }
   }
 }

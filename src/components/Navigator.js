@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Footer, FooterTab, Button, Icon, Text, Container, Content } from 'native-base';
-import LoginForm from './LoginForm';
+import PostingsList from './PostingsList';
 import SettingsView from './SettingsView';
 import CameraView from './CameraView';
 
@@ -11,7 +11,7 @@ export default class Navigator extends Component {
             tab1: false,
             tab2: true,
             tab3: false,
-            ComponentPicked: LoginForm
+            ComponentPicked: PostingsList
         };
     }
     toggleTab1(){
@@ -27,7 +27,7 @@ export default class Navigator extends Component {
             tab1: false,
             tab2: true,
             tab3: false,
-            ComponentPicked: LoginForm
+            ComponentPicked: PostingsList
         });
     }
     toggleTab3(){
@@ -48,15 +48,15 @@ export default class Navigator extends Component {
                 <FooterTab>
                     <Button active={this.state.tab1} onPress={() => this.toggleTab1()}>
                         <Icon active={this.state.tab1} name="camera" />
-                        <Text>Camera</Text>
+                        <Text active={this.state.tab1}>Camera</Text>
                     </Button>
                     <Button active={this.state.tab2} onPress={() => this.toggleTab2()} >
                         <Icon active={this.state.tab2} name="ios-person" />
-                        <Text>Logging</Text>
+                        <Text active={this.state.tab2}>Posts</Text>
                     </Button>
                     <Button active={this.state.tab3} onPress={() => this.toggleTab3()} >
                         <Icon active={this.state.tab3} name="settings" />
-                        <Text>Settings</Text>
+                        <Text active={this.state.tab3}>Settings</Text>
                     </Button>
                 </FooterTab>
             </Footer>
